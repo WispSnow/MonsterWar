@@ -27,11 +27,35 @@ find_package(SDL3_ttf REQUIRED)
 find_package(glm REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(EnTT REQUIRED)
 
 # 设置通用源文件
 set(SOURCES
     src/main.cpp
 )
+
+# --- 添加 ImGui 开始 ---
+
+# 定义 ImGui 源文件变量，方便管理
+set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/external/imgui)
+set(IMGUI_SOURCES
+    ${IMGUI_DIR}/imgui.cpp
+    ${IMGUI_DIR}/imgui_draw.cpp
+    ${IMGUI_DIR}/imgui_tables.cpp
+    ${IMGUI_DIR}/imgui_widgets.cpp
+    ${IMGUI_DIR}/imgui_demo.cpp
+    # Backend files
+    ${IMGUI_DIR}/backends/imgui_impl_sdl3.cpp
+    ${IMGUI_DIR}/backends/imgui_impl_sdlrenderer3.cpp
+)
+
+# 将 ImGui 的目录和其后端目录添加到头文件搜索路径
+include_directories(
+    ${IMGUI_DIR}
+    ${IMGUI_DIR}/backends
+)
+
+# --- 添加 ImGui 结束 ---
 
 # 根据平台向"通用源文件"追加平台专属的文件
 # if(WIN32)
@@ -41,7 +65,7 @@ set(SOURCES
 # TODO: MacOS 和 Linux 平台
 
 # 添加可执行文件, 使用配置好的 "SOURCES" 变量
-add_executable(${TARGET} ${SOURCES})
+add_executable(${TARGET} ${SOURCES} ${IMGUI_SOURCES})
 
 # 链接库
 target_link_libraries(${TARGET}
@@ -52,6 +76,7 @@ target_link_libraries(${TARGET}
                         glm::glm
                         nlohmann_json::nlohmann_json
                         spdlog::spdlog
+                        EnTT::EnTT
                         )
 
 # 不要弹出控制台窗口
