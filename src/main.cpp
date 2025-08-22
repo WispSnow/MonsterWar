@@ -7,13 +7,32 @@
 #include <glm/glm.hpp>
 #include <nlohmann/json.hpp>
 #include <spdlog/spdlog.h>
+#include <entt/entt.hpp>
+#include <imgui.h>
+#include <imgui_impl_sdl3.h>
+#include <imgui_impl_sdlrenderer3.h>
 
 int main(int, char**) {
+
+    // --- entt 测试 ---
+    entt::registry registry;
+
+    // 创建一个实体
+    entt::entity player = registry.create();
+    entt::entity enemy = registry.create();
+
+    // 打印出实体ID，但它就是一个数字，本身没有意义
+    // entt会保证这个数字是独一无二的
+    std::cout << "Player entity ID: " << static_cast<uint32_t>(player) << std::endl;
+    std::cout << "Enemy entity ID: " << static_cast<uint32_t>(enemy) << std::endl;
+
+    // --- spdlog json 测试 ---
     spdlog::info("你好，世界!");
     nlohmann::json json_data = {{"a",10}};
     auto num = json_data["a"].get<int>();
     spdlog::warn("json: {}", num);
-    
+
+    // -- glm 测试 --
     glm::vec2 a = glm::vec2(1.0f, 2.0f);
     glm::vec2 b = glm::vec2(3.0f, 4.0f);
     auto c = a * b;
@@ -68,6 +87,16 @@ int main(int, char**) {
     TTF_SetTextColor(text, 255, 0, 0, 255);
     TTF_SetTextWrapWidth(text, 50);
     // Do something with the window and renderer here...
+
+    // --- ImGui 测试 ---
+    // 1. 初始化 ImGui
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+
+    // 2. ImGui: 初始化 ImGui 的 SDL3 和 SDL_Renderer3 后端
+    ImGui_ImplSDL3_InitForSDLRenderer(window, renderer);
+    ImGui_ImplSDLRenderer3_Init(renderer);
+
     // 渲染循环
     glm::vec2 mousePos = glm::vec2(0.0f, 0.0f);
     while (true) {
@@ -76,7 +105,17 @@ int main(int, char**) {
             if (event.type == SDL_EVENT_QUIT) {
                 break;
             }
+            // 3. ImGui:处理 ImGui 事件
+            ImGui_ImplSDL3_ProcessEvent(&event);
         }
+        // 4. ImGui: 开始 ImGui 渲染
+        ImGui_ImplSDLRenderer3_NewFrame();
+        ImGui_ImplSDL3_NewFrame();
+        ImGui::NewFrame();
+
+        // 5. 显示一个Demo窗口
+        ImGui::ShowDemoWindow();
+
         auto state = SDL_GetMouseState(&mousePos.x, &mousePos.y);
         // SDL_Log("Mouse Pos: (%f, %f)", mousePos.x, mousePos.y);
         if (state & SDL_BUTTON_LMASK) {
@@ -105,12 +144,21 @@ int main(int, char**) {
         // 新的画文本方法：
         TTF_DrawRendererText(text, 400, 400);
 
+        // 6. ImGui: 将 ImGui 的内容渲染出来
+        ImGui::Render();
+        ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
+
         // 更新屏幕
         SDL_RenderPresent(renderer);
         
 
         
     }
+
+    // 7. ImGui: 清理工作
+    ImGui_ImplSDLRenderer3_Shutdown();
+    ImGui_ImplSDL3_Shutdown();
+    ImGui::DestroyContext();
 
     // 清理图片资源
     SDL_DestroyTexture(texture);

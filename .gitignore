@@ -21,10 +21,14 @@ cmake-build-*/
 Doxyfile
 doc/
 doxygen_*
-assets/audio
-assets/fonts
-assets/textures
 imgui.ini
+
+# external folder - ignore all except imgui
+external/
+!external/imgui/
+
+# prebuilt
+prebuilt/
 
 # Prerequisites
 *.d
