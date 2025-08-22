@@ -11,52 +11,59 @@ struct velocity {
     float dy;
 };
 
-// 增加一个新组件，用于标记静态物体，帮助我们演示视图的过滤能力。
-struct immovable_tag {};
+// 新增一个组件来存储实体的“标签”
+// 这里用 entt::hashed_string 作为标签的类型
+struct tag {
+    entt::hashed_string value;
+};
+
 
 int main() {
+    // 使用 using namespace 来简化哈希字符串字面量的使用
+    using namespace entt::literals;
+
     entt::registry registry;
 
+    // 创建实体并添加基础组件
     entt::entity player = registry.create();
     registry.emplace<position>(player, 10.f, 20.f);
     registry.emplace<velocity>(player, 1.f, 0.5f);
-
+    
     entt::entity enemy = registry.create();
     registry.emplace<position>(enemy, 100.f, 50.f);
     registry.emplace<velocity>(enemy, -0.5f, -1.f);
     
-    entt::entity obstacle = registry.create();
-    registry.emplace<position>(obstacle, 200.f, 200.f);
-    registry.emplace<immovable_tag>(obstacle); // 障碍物有位置，但没有速度，并且不可移动
+    // 1. 使用哈希字符串作为组件数据
+    // "player"_hs 和 "enemy"_hs 在编译时就会被转换成一个整数。
+    // 这意味着在运行时，我们比较的是两个整数，速度极快。
+    registry.emplace<tag>(player, "player"_hs);
+    // registry.emplace<tag>(enemy, "enemy"_hs);
 
-    spdlog::info("=== 游戏update更新前 ===");
-    auto initial_player_pos = registry.get<position>(player);
-    spdlog::info("玩家初始位置: ({}, {})", initial_player_pos.x, initial_player_pos.y);
-    auto initial_enemy_pos = registry.get<position>(enemy);
-    spdlog::info("敌人初始位置: ({}, {})", initial_enemy_pos.x, initial_enemy_pos.y);
+    // 运行时转换
+    std::string config_name = "enemy";
+    auto enemy_hs = entt::hashed_string{config_name.c_str()};
+    registry.emplace<tag>(enemy, enemy_hs);
 
+    spdlog::info("=== 使用哈希字符串标签 ===");
 
-    // === 游戏更新 （通常在System中进行）===
-    // 1. 创建一个视图
-    // 这个视图会包含所有 *同时* 拥有 position 和 velocity 组件的实体。
-    // 障碍物 (obstacle) 不会被包含在内，因为它没有 velocity 组件。
-    auto view = registry.view<position, velocity>();
+    // 2. 通过视图遍历并识别实体
+    auto view = registry.view<const tag, const position>();
     
-    spdlog::info("--- 正在更新 {} 个可移动实体 ---", view.size_hint());
+    view.each([](const auto& entity_tag, const auto& pos) {
+        // 我们可以直接比较哈希值
+        if (entity_tag.value == "player"_hs) {
+            spdlog::info("找到玩家，位置: ({}, {})", pos.x, pos.y);
+        }
 
-    // 2. 遍历视图并更新组件(这是最简单的写法，其它写法可参见 https://github.com/skypjack/entt/wiki/Entity-Component-System#views)
-    for (auto entity : view) {
-        auto& pos = view.get<position>(entity);
-        const auto& vel = view.get<velocity>(entity);
-        pos.x += vel.dx;
-        pos.y += vel.dy;
-    }
+        if (entity_tag.value == "enemy"_hs) {
+            spdlog::info("找到敌人，位置: ({}, {})", pos.x, pos.y);
+        }
+    });
 
-    spdlog::info("=== 游戏 update 结束后 ===");
-    auto final_player_pos = registry.get<position>(player);
-    spdlog::info("玩家更新后位置: ({}, {})", final_player_pos.x, final_player_pos.y);
-    auto final_enemy_pos = registry.get<position>(enemy);
-    spdlog::info("敌人更新后位置: ({}, {})", final_enemy_pos.x, final_enemy_pos.y);
+    // 3. 哈希字符串的哈希值与原始值
+    auto player_tag = registry.get<tag>(player);
+    spdlog::info("玩家标签的哈希值: {}", player_tag.value.value());
+    spdlog::info("玩家标签的原始文本: {}", player_tag.value.data());
 
     return 0;
 }
