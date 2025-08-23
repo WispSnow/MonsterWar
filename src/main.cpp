@@ -2,41 +2,75 @@
 #include <entt/entt.hpp>
 #include <glm/vec2.hpp>
 
-using namespace entt::literals;
-
-void add_context(entt::registry& registry) {
-    // 往上下文中添加一些数据（注意默认情况下，每种类型只能添加一个）
-    registry.ctx().emplace<bool>(true);
-    registry.ctx().emplace<glm::vec2>(1.0f, 2.0f);
-    registry.ctx().emplace<int>(42);
-    registry.ctx().emplace<std::string>("hello");
-    // 如果要添加同种类型的数据，可以使用 emplace_as + 哈希标签
-    registry.ctx().emplace_as<std::string>("world"_hs, "world");
+// 一个符合委托签名的全局函数
+int multiply_by_two(int value) {
+    spdlog::info("[全局函数] 被调用，输入: {}", value);
+    return value * 2;
 }
 
-void get_context(entt::registry& registry) {
-    // 从上下文中获取数据
-    bool bool_value = registry.ctx().get<bool>();
-    glm::vec2 vec2_value = registry.ctx().get<glm::vec2>();
-    int int_value = registry.ctx().get<int>();
-    std::string string_value = registry.ctx().get<std::string>();
-    auto new_string = registry.ctx().get<std::string>("world"_hs);
+// 一个普通的类，使用它的成员函数
+class Calculator {
+    int multiplication_factor;
+    
+public:
+    Calculator(int factor) : multiplication_factor(factor) {}
 
-    spdlog::info("bool 值: {}", bool_value);
-    spdlog::info("vec2 值: ({}, {})", vec2_value.x, vec2_value.y);
-    spdlog::info("int 值: {}", int_value);
-    spdlog::info("string 值: {}", string_value);
-    spdlog::info("new_string 值: {}", new_string);
-}
+    int multiply(int value) const {
+        spdlog::info("[成员函数] 被调用，输入: {}", value);
+        return value * multiplication_factor;
+    }
+};
+
 
 int main() {
-    // 每个 registry 实例都包含一个上下文，你可以把它看作是一个类型安全的、与注册表绑定的全局变量容器。
-    entt::registry registry;
+    // 1. 定义一个委托
+    // 模板参数是委托期望的函数签名：一个接受 int 并返回 int 的函数。
+    entt::delegate<int(int)> my_delegate;
 
-    add_context(registry);
-    get_context(registry);
+    // 2. 检查委托是否有效
+    // 刚创建的委托是空的，调用它会导致未定义行为。
+    if (!my_delegate) {
+        spdlog::info("委托当前是空的。");
+    }
 
-    registry.clear();
+    // 3. 连接一个全局函数
+    spdlog::info("\n=== 连接全局函数 ===");
+    my_delegate.connect<&multiply_by_two>();
+
+    if (my_delegate) {
+        // 调用委托，就像调用一个普通函数
+        int result = my_delegate(10);
+        spdlog::info("委托调用的结果: {}", result);
+    }
+
+    // 4. 连接一个成员函数
+    // 连接成员函数需要一个类的实例。
+    spdlog::info("\n=== 连接成员函数 ===");
+    Calculator my_calculator(5);
+    my_delegate.connect<&Calculator::multiply>(my_calculator);
+
+    if (my_delegate) {
+        int result = my_delegate(10);
+        spdlog::info("委托调用的结果: {}", result);
+    }
+    
+    // 5. 重置委托
+    // reset() 会清空委托，使其变回无效状态。
+    spdlog::info("\n=== 重置委托 ===");
+    my_delegate.reset();
+
+    if (!my_delegate) {
+        spdlog::info("委托已被重置为空。");
+    }
+
+    // 6. 使用构造函数直接连接 (便捷方式)
+    Calculator other_calculator(3);
+    entt::delegate<int(int)> another_delegate{entt::connect_arg<&Calculator::multiply>, other_calculator};
+    
+    spdlog::info("\n=== 使用构造函数连接 ===");
+    int result = another_delegate(10);
+    spdlog::info("新委托调用的结果: {}", result);
+
 
     return 0;
 }
