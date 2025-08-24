@@ -1,9 +1,38 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <SDL3_image/SDL_image.h>
 #include <spdlog/spdlog.h>
 #include <imgui.h>
 #include <imgui_impl_sdl3.h>
 #include <imgui_impl_sdlrenderer3.h>
+
+void ImGuiWindow1(){
+
+    static float volume_value = 0.5f;
+    ImGui::Begin("窗口1");
+    ImGui::Text("这是第一个窗口");
+    ImGui::SetWindowFontScale(1.5f);
+    if (ImGui::Button("按钮1", ImVec2(200, 60))) {
+        spdlog::info("按钮1被点击");
+    }
+    ImGui::SetWindowFontScale(1.0f);
+    if (ImGui::SliderFloat("音量", &volume_value, 0.0f, 1.0f)) {
+        spdlog::info("音量被调整: {}", volume_value);
+    }
+    ImGui::End();
+}
+
+void ImGuiWindow2(SDL_Renderer *renderer) {
+    ImGui::Begin("窗口2");
+    // 显示图片
+    auto texture = IMG_LoadTexture(renderer, "assets/textures/Buildings/Castle.png");
+    if (texture) {
+        ImGui::Image(texture, ImVec2(128, 128));
+    } else {
+        ImGui::Text("无法加载图片");
+    }
+    ImGui::End();
+}
 
 void ImGuiOptionalSettings() {
     ImGuiIO& io = ImGui::GetIO();
@@ -63,7 +92,9 @@ void ImGuiLoop(SDL_Renderer *renderer) {
     ImGui::NewFrame();
 
     // 显示一个Demo窗口 （UI声明与逻辑交互）
-    ImGui::ShowDemoWindow();
+    // ImGui::ShowDemoWindow();
+    ImGuiWindow1();
+    ImGuiWindow2(renderer);
 
     // ImGui: 渲染
     ImGui::Render();    // 生成绘图数据
