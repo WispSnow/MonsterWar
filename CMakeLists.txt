@@ -314,6 +314,47 @@ find_or_fetch_dependency(
 # 设置通用源文件
 set(SOURCES
     src/main.cpp
+    src/engine/audio/audio_player.cpp
+    src/engine/core/game_app.cpp
+    src/engine/core/time.cpp
+    src/engine/core/config.cpp
+    src/engine/core/context.cpp
+    src/engine/core/game_state.cpp
+    src/engine/resource/resource_manager.cpp
+    src/engine/resource/texture_manager.cpp
+    src/engine/resource/audio_manager.cpp
+    src/engine/resource/font_manager.cpp
+    src/engine/render/renderer.cpp
+    src/engine/render/camera.cpp
+    src/engine/render/animation.cpp
+    src/engine/render/text_renderer.cpp
+    src/engine/input/input_manager.cpp
+    src/engine/object/game_object.cpp
+    src/engine/component/sprite_component.cpp
+    src/engine/component/transform_component.cpp
+    src/engine/component/parallax_component.cpp
+    src/engine/component/tilelayer_component.cpp
+    src/engine/component/physics_component.cpp
+    src/engine/component/collider_component.cpp
+    src/engine/component/animation_component.cpp
+    src/engine/component/health_component.cpp
+    src/engine/component/audio_component.cpp
+    src/engine/physics/physics_engine.cpp
+    src/engine/physics/collision.cpp
+    src/engine/scene/scene.cpp
+    src/engine/scene/scene_manager.cpp
+    src/engine/scene/level_loader.cpp
+    src/engine/ui/ui_manager.cpp
+    src/engine/ui/ui_element.cpp
+    src/engine/ui/ui_interactive.cpp
+    src/engine/ui/ui_panel.cpp
+    src/engine/ui/ui_image.cpp
+    src/engine/ui/ui_label.cpp
+    src/engine/ui/ui_button.cpp
+    src/engine/ui/state/ui_normal_state.cpp
+    src/engine/ui/state/ui_pressed_state.cpp
+    src/engine/ui/state/ui_hover_state.cpp
+    src/game/scene/game_scene.cpp
 )
 
 # --- 添加 ImGui 开始 ---
