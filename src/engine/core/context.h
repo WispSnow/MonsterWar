@@ -42,8 +42,10 @@ public:
      * @param input_manager 对 InputManager 实例的引用。
      * @param renderer 对 Renderer 实例的引用。
      * @param camera 对 Camera 实例的引用。
+     * @param text_renderer 对 TextRenderer 实例的引用。
      * @param resource_manager 对 ResourceManager 实例的引用。
-     * @param physics_engine 对 PhysicsEngine 实例的引用。
+     * @param audio_player 对 AudioPlayer 实例的引用。
+     * @param game_state 对 GameState 实例的引用。
      */
     Context(engine::input::InputManager& input_manager,
             engine::render::Renderer& renderer,

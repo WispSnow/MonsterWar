@@ -29,7 +29,7 @@ void Scene::init() {
 void Scene::update(float delta_time) {
     if (!is_initialized_) return;
     
-    // 只有游戏进行中，才需要更新物理引擎和相机
+    // 只有游戏进行中，才需要更新相机
     if (context_.getGameState().isPlaying()){
         context_.getCamera().update(delta_time);
     }

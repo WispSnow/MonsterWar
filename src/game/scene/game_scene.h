@@ -3,7 +3,7 @@
 
 namespace game::scene {
 
-class GameScene : public engine::scene::Scene {
+class GameScene final: public engine::scene::Scene {
 public:
     GameScene(engine::core::Context& context, engine::scene::SceneManager& scene_manager);
     ~GameScene();
