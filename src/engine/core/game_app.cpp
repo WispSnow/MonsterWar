@@ -9,7 +9,6 @@
 #include "../render/camera.h"
 #include "../render/text_renderer.h"
 #include "../input/input_manager.h"
-#include "../physics/physics_engine.h"
 #include "../scene/scene_manager.h"
 #include <SDL3/SDL.h>
 #include <spdlog/spdlog.h>
@@ -67,7 +66,6 @@ bool GameApp::init() {
     if (!initCamera()) return false;
     if (!initTextRenderer()) return false;
     if (!initInputManager()) return false;
-    if (!initPhysicsEngine()) return false;
     if (!initGameState()) return false;
 
     if (!initContext()) return false;
@@ -255,19 +253,6 @@ bool GameApp::initInputManager()
     return true;
 }
 
-bool GameApp::initPhysicsEngine()
-{
-    try {
-        physics_engine_ = std::make_unique<engine::physics::PhysicsEngine>();
-    }
-    catch (const std::exception& e) {
-        spdlog::error("初始化物理引擎失败: {}", e.what());
-        return false;
-    }
-    spdlog::trace("物理引擎初始化成功。");
-    return true;
-}
-
 bool GameApp::initGameState()
 {
     try {
@@ -287,7 +272,6 @@ bool GameApp::initContext()
                                                            *camera_, 
                                                            *text_renderer_,
                                                            *resource_manager_, 
-                                                           *physics_engine_, 
                                                            *audio_player_,
                                                            *game_state_);
     } catch (const std::exception& e) {

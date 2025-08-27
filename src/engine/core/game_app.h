@@ -20,10 +20,6 @@ namespace engine::input {
 class InputManager;
 }
 
-namespace engine::physics {
-class PhysicsEngine;
-}
-
 namespace engine::scene {
 class SceneManager;
 }
@@ -60,7 +56,6 @@ private:
     std::unique_ptr<engine::input::InputManager> input_manager_;
     std::unique_ptr<engine::core::Context> context_;
     std::unique_ptr<engine::scene::SceneManager> scene_manager_;
-    std::unique_ptr<engine::physics::PhysicsEngine> physics_engine_;
     std::unique_ptr<engine::audio::AudioPlayer> audio_player_;
     std::unique_ptr<engine::core::GameState> game_state_;
 
@@ -103,7 +98,6 @@ private:
     [[nodiscard]] bool initTextRenderer();
     [[nodiscard]] bool initCamera();
     [[nodiscard]] bool initInputManager();
-    [[nodiscard]] bool initPhysicsEngine();
     [[nodiscard]] bool initGameState();
     [[nodiscard]] bool initContext();
     [[nodiscard]] bool initSceneManager();

@@ -3,7 +3,6 @@
 #include "../object/game_object.h"
 #include "../core/context.h"
 #include "../core/game_state.h"
-#include "../physics/physics_engine.h"
 #include "../render/camera.h"
 #include "../ui/ui_manager.h"
 #include <algorithm> // for std::remove_if
@@ -32,7 +31,6 @@ void Scene::update(float delta_time) {
     
     // 只有游戏进行中，才需要更新物理引擎和相机
     if (context_.getGameState().isPlaying()){
-        context_.getPhysicsEngine().update(delta_time);
         context_.getCamera().update(delta_time);
     }
 

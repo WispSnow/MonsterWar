@@ -334,16 +334,12 @@ set(SOURCES
     src/engine/component/transform_component.cpp
     src/engine/component/parallax_component.cpp
     src/engine/component/tilelayer_component.cpp
-    src/engine/component/physics_component.cpp
-    src/engine/component/collider_component.cpp
     src/engine/component/animation_component.cpp
     src/engine/component/health_component.cpp
     src/engine/component/audio_component.cpp
-    src/engine/physics/physics_engine.cpp
-    src/engine/physics/collision.cpp
     src/engine/scene/scene.cpp
     src/engine/scene/scene_manager.cpp
-    src/engine/scene/level_loader.cpp
+    # src/engine/scene/level_loader.cpp
     src/engine/ui/ui_manager.cpp
     src/engine/ui/ui_element.cpp
     src/engine/ui/ui_interactive.cpp

@@ -113,7 +113,6 @@ protected:
     void init() override;
     void update(float, engine::core::Context&) override {}
     void render(engine::core::Context& context) override;
-    void clean() override;
 };
 
 } // namespace engine::component
