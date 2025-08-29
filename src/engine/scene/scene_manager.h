@@ -1,4 +1,5 @@
 #pragma once
+#include "../utils/events.h"
 #include <memory>
 #include <string>
 #include <vector>
@@ -35,11 +36,6 @@ public:
     SceneManager(SceneManager&&) = delete;
     SceneManager& operator=(SceneManager&&) = delete;
 
-    // 延时切换场景
-    void requestPushScene(std::unique_ptr<Scene>&& scene);      ///< @brief 请求压入一个新场景。
-    void requestPopScene();                                     ///< @brief 请求弹出当前场景。
-    void requestReplaceScene(std::unique_ptr<Scene>&& scene);   ///< @brief 请求替换当前场景。
-
     // getters
     Scene* getCurrentScene() const;                                 ///< @brief 获取当前活动场景（栈顶场景）的指针。
     engine::core::Context& getContext() const { return context_; }  ///< @brief 获取引擎上下文引用。
@@ -51,6 +47,11 @@ public:
     void close();
 
 private:
+    // 事件回调函数
+    void onPopScene();
+    void onPushScene(engine::utils::PushSceneEvent& event);
+    void onReplaceScene(engine::utils::ReplaceSceneEvent& event);
+
     void processPendingActions();                           ///< @brief 处理挂起的场景操作（每轮更新最后调用）。
     // 直接切换场景
     void pushScene(std::unique_ptr<Scene>&& scene);         ///< @brief 将一个新场景压入栈顶，使其成为活动场景。

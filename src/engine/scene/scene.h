@@ -29,7 +29,6 @@ class Scene {
 protected:
     std::string scene_name_;                            ///< @brief 场景名称
     engine::core::Context& context_;                    ///< @brief 上下文引用（隐式，构造时传入）
-    engine::scene::SceneManager& scene_manager_;        ///< @brief 场景管理器引用（构造时传入）
     std::unique_ptr<engine::ui::UIManager> ui_manager_; ///< @brief UI管理器(初始化时自动创建)
     
     bool is_initialized_ = false;                       ///< @brief 场景是否已初始化(非当前场景很可能未被删除，因此需要初始化标志避免重复初始化)
@@ -42,9 +41,8 @@ public:
      *
      * @param name 场景的名称。
      * @param context 场景上下文。
-     * @param scene_manager 场景管理器。
      */
-    Scene(std::string_view name, engine::core::Context& context, engine::scene::SceneManager& scene_manager);
+    Scene(std::string_view name, engine::core::Context& context);
 
     virtual ~Scene();           // 1. 基类必须声明虚析构函数才能让派生类析构函数被正确调用。
                                 // 2. 析构函数定义必须写在cpp中，不然需要引入GameObject头文件
@@ -80,6 +78,18 @@ public:
     /// @brief 根据名称查找游戏对象（返回找到的第一个对象）。
     engine::object::GameObject* findGameObjectByName(std::string_view name) const;
 
+    /// @brief 请求弹出当前场景。
+    void requestPopScene();
+
+    /// @brief 请求压入一个新场景。
+    void requestPushScene(std::unique_ptr<engine::scene::Scene>&& scene);
+    
+    /// @brief 请求替换当前场景。
+    void requestReplaceScene(std::unique_ptr<engine::scene::Scene>&& scene);
+
+    /// @brief 退出游戏。
+    void quit();
+
     // getters and setters
     void setName(std::string_view name) { scene_name_ = name; }               ///< @brief 设置场景名称
     std::string_view getName() const { return scene_name_; }                  ///< @brief 获取场景名称
@@ -87,7 +97,6 @@ public:
     bool isInitialized() const { return is_initialized_; }                      ///< @brief 获取场景是否已初始化
 
     engine::core::Context& getContext() const { return context_; }                  ///< @brief 获取上下文引用
-    engine::scene::SceneManager& getSceneManager() const { return scene_manager_; } ///< @brief 获取场景管理器引用
     std::vector<std::unique_ptr<engine::object::GameObject>>& getGameObjects() { return game_objects_; } ///< @brief 获取场景中的游戏对象
 
 protected:

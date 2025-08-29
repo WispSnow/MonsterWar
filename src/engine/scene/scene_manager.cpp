@@ -2,11 +2,16 @@
 #include "scene.h"
 #include "../core/context.h"
 #include <spdlog/spdlog.h>
+#include <entt/signal/dispatcher.hpp>
 
 namespace engine::scene {
 
 SceneManager::SceneManager(engine::core::Context& context)
     : context_(context) {
+    // 注册事件处理函数
+    context_.getDispatcher().sink<engine::utils::PopSceneEvent>().connect<&SceneManager::onPopScene>(this);
+    context_.getDispatcher().sink<engine::utils::PushSceneEvent>().connect<&SceneManager::onPushScene>(this);
+    context_.getDispatcher().sink<engine::utils::ReplaceSceneEvent>().connect<&SceneManager::onReplaceScene>(this);
     spdlog::trace("场景管理器已创建。");
 }
 
@@ -58,24 +63,23 @@ void SceneManager::close() {
             scene_stack_.back()->clean();
         }
         scene_stack_.pop_back();
-    }   
+    }
+    // 断开事件处理函数 (一次断开所有和当前实例绑定的回调函数)
+    context_.getDispatcher().disconnect(this);
 }
 
-void SceneManager::requestPopScene()
-{
+void SceneManager::onPopScene() {
     pending_action_ = PendingAction::Pop;
 }
 
-void SceneManager::requestReplaceScene(std::unique_ptr<Scene>&& scene)
-{
-    pending_action_ = PendingAction::Replace;
-    pending_scene_ = std::move(scene);
+void SceneManager::onPushScene(engine::utils::PushSceneEvent& event) {
+    pending_action_ = PendingAction::Push;
+    pending_scene_ = std::move(event.scene);
 }
 
-void SceneManager::requestPushScene(std::unique_ptr<Scene>&& scene)
-{
-    pending_action_ = PendingAction::Push;
-    pending_scene_ = std::move(scene);
+void SceneManager::onReplaceScene(engine::utils::ReplaceSceneEvent& event) {
+    pending_action_ = PendingAction::Replace;
+    pending_scene_ = std::move(event.scene);
 }
 
 // --- Private Methods ---
@@ -131,6 +135,10 @@ void SceneManager::popScene() {
         scene_stack_.back()->clean();       // 显式调用清理
     }
     scene_stack_.pop_back();
+    if (scene_stack_.empty()) {
+        spdlog::warn("弹出最后一个场景，退出游戏。");
+        context_.getDispatcher().enqueue<engine::utils::QuitEvent>();
+    }
 }
 
 void SceneManager::replaceScene(std::unique_ptr<Scene>&& scene) {
