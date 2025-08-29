@@ -1,7 +1,9 @@
 #include "game_scene.h"
 #include "../../engine/core/context.h"
 #include "../../engine/input/input_manager.h"
+#include "../../engine/utils/events.h"
 #include <entt/signal/sigh.hpp>
+#include <entt/signal/dispatcher.hpp>
 #include <spdlog/spdlog.h>
 
 namespace game::scene {
@@ -29,6 +31,8 @@ void GameScene::clean() {
 
 void GameScene::onAttack() {
     spdlog::info("onAttack");
+    // 按攻击键即发送“退出游戏”信号
+    context_.getDispatcher().enqueue<engine::utils::QuitEvent>();
 }
 
 void GameScene::onJump() {

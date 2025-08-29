@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <functional>
+#include <entt/signal/fwd.hpp>
 
 // 前向声明, 减少头文件的依赖，增加编译速度
 struct SDL_Window;
@@ -47,6 +48,7 @@ private:
     std::function<void(engine::scene::SceneManager&)> scene_setup_func_;
 
     // 引擎组件
+    std::unique_ptr<entt::dispatcher> dispatcher_;  // 事件分发器
     std::unique_ptr<engine::core::Time> time_;
     std::unique_ptr<engine::resource::ResourceManager> resource_manager_;
     std::unique_ptr<engine::render::Renderer> renderer_;
@@ -89,6 +91,7 @@ private:
     void close();
 
     // 各模块的初始化/创建函数，在init()中调用
+    [[nodiscard]] bool initDispatcher();
     [[nodiscard]] bool initConfig();
     [[nodiscard]] bool initSDL();
     [[nodiscard]] bool initTime();
@@ -101,6 +104,9 @@ private:
     [[nodiscard]] bool initGameState();
     [[nodiscard]] bool initContext();
     [[nodiscard]] bool initSceneManager();
+
+    // 事件处理函数
+    void onQuitEvent();
 };
 
 } // namespace engine::core
