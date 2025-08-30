@@ -40,24 +40,28 @@ void GameScene::clean() {
     Scene::clean();
 }
 
-void GameScene::onReplace() {
+bool GameScene::onReplace() {
     spdlog::info("onReplace, 切换场景");
     requestReplaceScene(std::make_unique<game::scene::GameScene>(context_));
+    return true;
 }
 
-void GameScene::onPush() {
+bool GameScene::onPush() {
     spdlog::info("onPush, 压入场景");
     requestPushScene(std::make_unique<game::scene::GameScene>(context_));
+    return true;
 }
 
-void GameScene::onPop() {
+bool GameScene::onPop() {
     spdlog::info("onPop, 弹出编号为 {} 的场景", scene_num_);
     requestPopScene();
+    return true;
 }
 
-void GameScene::onQuit() {
+bool GameScene::onQuit() {
     spdlog::info("onQuit, 退出游戏");
     quit();
+    return true;
 }
 
 } // namespace game::scene

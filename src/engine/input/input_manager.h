@@ -40,7 +40,7 @@ private:
      * @note 每个动作有3个状态: PRESSED, HELD, RELEASED，每个状态对应一个回调函数
      * @note 绑定动作时再插入元素（懒加载），初始化时为空
      */
-    std::unordered_map<std::string, std::array<entt::sigh<void()>, 3>> actions_to_func_; 
+    std::unordered_map<std::string, std::array<entt::sigh<bool()>, 3>> actions_to_func_; 
 
     /// @brief 存储每个动作的当前状态
     std::unordered_map<std::string, ActionState> action_states_;
@@ -66,7 +66,7 @@ public:
      * @param action_state 动作状态, 默认为按下瞬间
      * @return 一个 sink 对象，用于注册回调函数
      */
-    entt::sink<entt::sigh<void()>> onAction(std::string_view action_name, ActionState action_state = ActionState::PRESSED);
+    entt::sink<entt::sigh<bool()>> onAction(std::string_view action_name, ActionState action_state = ActionState::PRESSED);
 
 
     void update();                                    ///< @brief 更新输入状态，每轮循环最先调用
