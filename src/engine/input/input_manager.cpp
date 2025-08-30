@@ -1,14 +1,17 @@
 #include "input_manager.h"
 #include "../core/config.h"
+#include "../utils/events.h"
 #include <stdexcept>
 #include <SDL3/SDL.h>
 #include <spdlog/spdlog.h>
 #include <glm/vec2.hpp>
+#include <entt/signal/dispatcher.hpp>
 
 
 namespace engine::input {
 
-InputManager::InputManager(SDL_Renderer* sdl_renderer, const engine::core::Config* config): sdl_renderer_(sdl_renderer) {
+InputManager::InputManager(SDL_Renderer* sdl_renderer, const engine::core::Config* config, entt::dispatcher* dispatcher)
+    : sdl_renderer_(sdl_renderer), dispatcher_(dispatcher) {
     if (!sdl_renderer_) {
         spdlog::error("输入管理器: SDL_Renderer 为空指针");
         throw std::runtime_error("输入管理器: SDL_Renderer 为空指针");
@@ -61,6 +64,10 @@ void InputManager::update() {
     }
 }
 
+void InputManager::quit() {
+    dispatcher_->trigger<engine::utils::QuitEvent>();
+}
+
 void InputManager::processEvent(const SDL_Event& event) {
     switch (event.type) {
         case SDL_EVENT_KEY_DOWN:
@@ -90,15 +97,17 @@ void InputManager::processEvent(const SDL_Event& event) {
                     updateActionState(action_name, is_down, false); // 更新action状态
                 }
             }
-            // 在点击时更新鼠标位置
+            // 在点击时更新鼠标位置，同时更新逻辑位置
             mouse_position_ = {event.button.x, event.button.y};
+            SDL_RenderCoordinatesFromWindow(sdl_renderer_, mouse_position_.x, mouse_position_.y, &logical_mouse_position_.x, &logical_mouse_position_.y);
             break;
         }
         case SDL_EVENT_MOUSE_MOTION:        // 处理鼠标运动
             mouse_position_ = {event.motion.x, event.motion.y};
+            SDL_RenderCoordinatesFromWindow(sdl_renderer_, mouse_position_.x, mouse_position_.y, &logical_mouse_position_.x, &logical_mouse_position_.y);
             break;
         case SDL_EVENT_QUIT:
-            should_quit_ = true;
+            quit();
             break;
         default:
             break;
@@ -129,15 +138,6 @@ bool InputManager::isActionReleased(std::string_view action_name) const {
     return false;
 }
 
-bool InputManager::shouldQuit() const {
-    return should_quit_;
-}
-
-void InputManager::setShouldQuit(bool should_quit)
-{
-    should_quit_ = should_quit;
-}
-
 glm::vec2 InputManager::getMousePosition() const
 {
     return mouse_position_;
@@ -145,10 +145,8 @@ glm::vec2 InputManager::getMousePosition() const
 
 glm::vec2 InputManager::getLogicalMousePosition() const
 {
-    glm::vec2 logical_pos;
-    // 通过窗口坐标获取渲染坐标（逻辑坐标）
-    SDL_RenderCoordinatesFromWindow(sdl_renderer_, mouse_position_.x, mouse_position_.y, &logical_pos.x, &logical_pos.y);
-    return logical_pos;
+    // 每帧最多计算一次，避免每次调用时计算
+    return logical_mouse_position_;
 }
 
 // --- 初始化输入映射 ---
