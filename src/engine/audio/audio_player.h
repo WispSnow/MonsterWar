@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include <string_view>
+#include <entt/entity/fwd.hpp>
 
 namespace engine::resource {
     class ResourceManager;
@@ -14,13 +14,13 @@ namespace engine::audio {
 /**
  * @brief 用于控制音频播放的单例类。
  *
- * 提供播放音效和音乐的方法，使用由 ResourceManager 管理的资源。
- * 必须使用有效的 ResourceManager 实例初始化。
+ * @note 提供播放音效和音乐的方法，使用由 ResourceManager 管理的资源。
+ * @note 必须使用有效的 ResourceManager 实例初始化。
  */
 class AudioPlayer final{
 private:
     engine::resource::ResourceManager* resource_manager_;   ///< @brief 指向 ResourceManager 的非拥有指针，用于加载和管理音频资源。
-    std::string current_music_;         ///< @brief 当前正在播放的音乐路径，用于避免重复播放同一音乐。
+    entt::id_type current_music_id_;         ///< @brief 当前正在播放的音乐路径，用于避免重复播放同一音乐。
 
 public:
     /**
@@ -38,22 +38,41 @@ public:
     // --- 播放控制方法 --- 
     /**
      * @brief 播放音效（chunk）。
-     * 如果尚未缓存，则通过 ResourceManager 加载音效。
-     * @param sound_path 音效文件的路径。
+     * @note 必须确保 ResourceManager 加载了音效。
+     * @param sound_id 音效ID。
      * @param channel 要播放的特定通道，或 -1 表示第一个可用通道。默认为 -1。
      * @return 音效正在播放的通道，出错时返回 -1。
      */
-    int playSound(std::string_view sound_path, int channel = -1);
+    int playSound(entt::id_type sound_id, int channel = -1);
+
+    /**
+     * @brief 播放音效（chunk）。
+     * @note 如果尚未缓存，则通过 ResourceManager 加载音效。
+     * @param hashed_path 音效文件路径。
+     * @param channel 要播放的特定通道，或 -1 表示第一个可用通道。默认为 -1。
+     * @return 音效正在播放的通道，出错时返回 -1。
+     */
+    int playSound(entt::hashed_string hashed_path, int channel = -1);
 
     /**
      * @brief 播放背景音乐。如果正在播放，则淡出之前的音乐。
-     * 如果尚未缓存，则通过 ResourceManager 加载音乐。
-     * @param music_path 音乐文件的路径。
+     * @note 必须确保 ResourceManager 加载了音乐。
+     * @param music_id 音乐ID。
      * @param loops 循环次数（-1 无限循环，0 播放一次，1 播放两次，以此类推）。默认为 -1。
      * @param fade_in_ms 音乐淡入的时间（毫秒）（0 表示不淡入）。默认为 0。
      * @return 成功返回 true，出错返回 false。
      */
-    bool playMusic(std::string_view music_path, int loops = -1, int fade_in_ms = 0);
+    bool playMusic(entt::id_type music_id, int loops = -1, int fade_in_ms = 0);
+
+    /**
+     * @brief 播放背景音乐。如果正在播放，则淡出之前的音乐。
+     * @note 如果尚未缓存，则通过 ResourceManager 加载音乐。
+     * @param hashed_path 音乐文件路径。
+     * @param loops 循环次数（-1 无限循环，0 播放一次，1 播放两次，以此类推）。默认为 -1。
+     * @param fade_in_ms 音乐淡入的时间（毫秒）（0 表示不淡入）。默认为 0。
+     * @return 成功返回 true，出错返回 false。
+     */
+    bool playMusic(entt::hashed_string hashed_path, int loops = -1, int fade_in_ms = 0);
 
     /**
      * @brief 停止当前正在播放的背景音乐。

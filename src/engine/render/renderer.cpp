@@ -183,16 +183,21 @@ std::optional<SDL_FRect> Renderer::getSpriteSrcRect(const Sprite &sprite)
     }
 
     auto src_rect = sprite.getSourceRect();
-    if (src_rect.has_value()) {     // 如果Sprite中存在指定rect，则判断尺寸是否有效
-        if (src_rect.value().w <= 0 || src_rect.value().h <= 0) {
-            spdlog::error("源矩形尺寸无效，ID: {}", sprite.getTextureId());
+    if (src_rect.has_value()) {     // 如果Image中存在指定rect，则判断尺寸是否有效
+        if (src_rect.value().size.x <= 0 || src_rect.value().size.y <= 0) {
+            spdlog::error("源矩形尺寸无效，ID: {}, path: {}", sprite.getTextureId(), sprite.getTexturePath());
             return std::nullopt;
         }
-        return src_rect;
+        return SDL_FRect{
+            src_rect.value().position.x, 
+            src_rect.value().position.y, 
+            src_rect.value().size.x, 
+            src_rect.value().size.y
+        };
     } else {                        // 否则获取纹理尺寸并返回整个纹理大小
         SDL_FRect result = {0, 0, 0, 0};
         if (!SDL_GetTextureSize(texture, &result.w, &result.h)) {
-            spdlog::error("无法获取纹理尺寸，ID: {}", sprite.getTextureId());
+            spdlog::error("无法获取纹理尺寸，ID: {}, path: {}", sprite.getTextureId(), sprite.getTexturePath());
             return std::nullopt;
         }
         return result;

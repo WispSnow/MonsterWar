@@ -43,7 +43,7 @@ void TextRenderer::close()
     TTF_Quit();     // 一定要确保在ResourceManager销毁之后调用
 }
 
-void TextRenderer::drawUIText(std::string_view text, std::string_view font_id, int font_size,
+void TextRenderer::drawUIText(std::string_view text, entt::id_type font_id, int font_size,
                               const glm::vec2 &position, const engine::utils::FColor &color)
 {
     /* 构造函数已经保证了必要指针不会为空，这里不需要再检查 */
@@ -76,7 +76,7 @@ void TextRenderer::drawUIText(std::string_view text, std::string_view font_id, i
     TTF_DestroyText(temp_text_object);
 }
 
-void TextRenderer::drawText(const Camera &camera, std::string_view text, std::string_view font_id, int font_size, 
+void TextRenderer::drawText(const Camera &camera, std::string_view text, entt::id_type font_id, int font_size, 
                             const glm::vec2 &position, const engine::utils::FColor &color)
 {
     // 应用相机变换
@@ -86,9 +86,9 @@ void TextRenderer::drawText(const Camera &camera, std::string_view text, std::st
     drawUIText(text, font_id, font_size, position_screen, color);
 }
 
-glm::vec2 TextRenderer::getTextSize(std::string_view text, std::string_view font_id, int font_size) {
+glm::vec2 TextRenderer::getTextSize(std::string_view text, entt::id_type font_id, int font_size, std::string_view font_path) {
     /* 构造函数已经保证了必要指针不会为空，这里不需要再检查 */
-    TTF_Font* font = resource_manager_->getFont(font_id, font_size);
+    TTF_Font* font = resource_manager_->getFont(font_id, font_size, font_path);
     if (!font) {
         spdlog::warn("getTextSize 获取字体失败: {} 大小 {}", font_id, font_size);
         return glm::vec2(0.0f, 0.0f);

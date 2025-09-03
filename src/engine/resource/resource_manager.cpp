@@ -2,10 +2,14 @@
 #include "texture_manager.h"
 #include "audio_manager.h"
 #include "font_manager.h" 
+#include <fstream>
+#include <filesystem>
 #include <SDL3_mixer/SDL_mixer.h>
 #include <SDL3_ttf/SDL_ttf.h> 
 #include <glm/glm.hpp>
 #include <spdlog/spdlog.h>
+#include <nlohmann/json.hpp>
+#include <entt/core/hashed_string.hpp>
  
 namespace engine::resource {
 
@@ -29,21 +33,33 @@ void ResourceManager::clear() {
 }
 
 // --- 纹理接口实现 ---
-SDL_Texture* ResourceManager::loadTexture(std::string_view file_path) {
+SDL_Texture* ResourceManager::loadTexture(entt::id_type id, std::string_view file_path) {
     // 构造函数已经确保了 texture_manager_ 不为空，因此不需要再进行if检查，以免性能浪费
-    return texture_manager_->loadTexture(file_path);
+    return texture_manager_->loadTexture(id, file_path);
 }
 
-SDL_Texture* ResourceManager::getTexture(std::string_view file_path) {
-    return texture_manager_->getTexture(file_path);
+SDL_Texture* ResourceManager::loadTexture(entt::hashed_string str_hs) {
+    return texture_manager_->loadTexture(str_hs);
 }
 
-glm::vec2 ResourceManager::getTextureSize(std::string_view file_path) {
-    return texture_manager_->getTextureSize(file_path);
+SDL_Texture* ResourceManager::getTexture(entt::id_type id, std::string_view file_path) {
+    return texture_manager_->getTexture(id, file_path);
 }
 
-void ResourceManager::unloadTexture(std::string_view file_path) {
-    texture_manager_->unloadTexture(file_path);
+SDL_Texture* ResourceManager::getTexture(entt::hashed_string str_hs) {
+    return texture_manager_->getTexture(str_hs);
+}
+
+glm::vec2 ResourceManager::getTextureSize(entt::id_type id, std::string_view file_path) {
+    return texture_manager_->getTextureSize(id, file_path);
+}
+
+glm::vec2 ResourceManager::getTextureSize(entt::hashed_string str_hs) {
+    return texture_manager_->getTextureSize(str_hs);
+}
+
+void ResourceManager::unloadTexture(entt::id_type id) {
+    texture_manager_->unloadTexture(id);
 }
 
 void ResourceManager::clearTextures() {
@@ -51,32 +67,48 @@ void ResourceManager::clearTextures() {
 }
 
 // --- 音频接口实现 ---
-Mix_Chunk* ResourceManager::loadSound(std::string_view file_path) {
-    return audio_manager_->loadSound(file_path);
+Mix_Chunk* ResourceManager::loadSound(entt::id_type id, std::string_view file_path) {
+    return audio_manager_->loadSound(id, file_path);
 }
 
-Mix_Chunk* ResourceManager::getSound(std::string_view file_path) {
-    return audio_manager_->getSound(file_path);
+Mix_Chunk* ResourceManager::loadSound(entt::hashed_string str_hs) {
+    return audio_manager_->loadSound(str_hs);
 }
 
-void ResourceManager::unloadSound(std::string_view file_path) {
-    audio_manager_->unloadSound(file_path);
+Mix_Chunk* ResourceManager::getSound(entt::id_type id, std::string_view file_path) {
+    return audio_manager_->getSound(id, file_path);
+}
+
+Mix_Chunk* ResourceManager::getSound(entt::hashed_string str_hs) {
+    return audio_manager_->getSound(str_hs);
+}
+
+void ResourceManager::unloadSound(entt::id_type id) {
+    audio_manager_->unloadSound(id);
 }
 
 void ResourceManager::clearSounds() {
     audio_manager_->clearSounds();
 }
 
-Mix_Music* ResourceManager::loadMusic(std::string_view file_path) {
-    return audio_manager_->loadMusic(file_path);
+Mix_Music* ResourceManager::loadMusic(entt::id_type id, std::string_view file_path) {
+    return audio_manager_->loadMusic(id, file_path);
 }
 
-Mix_Music* ResourceManager::getMusic(std::string_view file_path) {
-    return audio_manager_->getMusic(file_path);
+Mix_Music* ResourceManager::loadMusic(entt::hashed_string str_hs) {
+    return audio_manager_->loadMusic(str_hs);
 }
 
-void ResourceManager::unloadMusic(std::string_view file_path) {
-    audio_manager_->unloadMusic(file_path);
+Mix_Music* ResourceManager::getMusic(entt::id_type id, std::string_view file_path) {
+    return audio_manager_->getMusic(id, file_path);
+}
+
+Mix_Music* ResourceManager::getMusic(entt::hashed_string str_hs) {
+    return audio_manager_->getMusic(str_hs);
+}
+
+void ResourceManager::unloadMusic(entt::id_type id) {
+    audio_manager_->unloadMusic(id);
 }
 
 void ResourceManager::clearMusic() {
@@ -84,16 +116,24 @@ void ResourceManager::clearMusic() {
 }
 
 // --- 字体接口实现 ---
-TTF_Font* ResourceManager::loadFont(std::string_view file_path, int point_size) {
-    return font_manager_->loadFont(file_path, point_size);
+TTF_Font* ResourceManager::loadFont(entt::id_type id, int point_size, std::string_view file_path) {
+    return font_manager_->loadFont(id, point_size, file_path);
 }
 
-TTF_Font* ResourceManager::getFont(std::string_view file_path, int point_size) {
-    return font_manager_->getFont(file_path, point_size);
+TTF_Font* ResourceManager::loadFont(entt::hashed_string str_hs, int point_size) {
+    return font_manager_->loadFont(str_hs, point_size);
 }
 
-void ResourceManager::unloadFont(std::string_view file_path, int point_size) {
-    font_manager_->unloadFont(file_path, point_size);
+TTF_Font* ResourceManager::getFont(entt::id_type id, int point_size, std::string_view file_path) {
+    return font_manager_->getFont(id, point_size, file_path);
+}
+
+TTF_Font* ResourceManager::getFont(entt::hashed_string str_hs, int point_size) {
+    return font_manager_->getFont(str_hs, point_size);
+}
+
+void ResourceManager::unloadFont(entt::id_type id, int point_size) {
+    font_manager_->unloadFont(id, point_size);
 }
 
 void ResourceManager::clearFonts() {

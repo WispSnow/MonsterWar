@@ -6,6 +6,7 @@
 #include <string>
 #include <string_view>
 #include <unordered_map>
+#include <entt/core/hashed_string.hpp>
 
 namespace engine::core {
     class Context;
@@ -24,9 +25,9 @@ class UIInteractive : public UIElement {
 protected:
     engine::core::Context& context_;                        ///< @brief 可交互元素很可能需要其他引擎组件
     std::unique_ptr<engine::ui::state::UIState> state_;     ///< @brief 当前状态
-    std::unordered_map<std::string, std::unique_ptr<engine::render::Sprite>> sprites_; ///< @brief 精灵集合
-    std::unordered_map<std::string, std::string> sounds_;   ///< @brief 音效集合，key为音效名称，value为音效文件路径
-    engine::render::Sprite* current_sprite_ = nullptr;      ///< @brief 当前显示的精灵
+    std::unordered_map<entt::id_type, engine::render::Sprite> sprites_; ///< @brief 精灵集合
+    std::unordered_map<entt::id_type, entt::id_type> sounds_;   ///< @brief 音效集合，key为音效名称ID，value为音效ID
+    entt::id_type current_sprite_id_;                        ///< @brief 当前显示的精灵ID
     bool interactive_ = true;                               ///< @brief 是否可交互
 
 public:
@@ -35,10 +36,10 @@ public:
 
     virtual void clicked() {}       ///< @brief 如果有点击事件，则重写该方法
 
-    void addSprite(std::string_view name, std::unique_ptr<engine::render::Sprite> sprite);///< @brief 添加精灵
-    void setSprite(std::string_view name);                                                ///< @brief 设置当前显示的精灵
-    void addSound(std::string_view name, std::string_view path);                        ///< @brief 添加音效
-    void playSound(std::string_view name);                                                ///< @brief 播放音效
+    void addSprite(entt::id_type name_id, engine::render::Sprite sprite);   ///< @brief 添加精灵
+    void setSprite(entt::id_type name_id);                                  ///< @brief 设置当前显示的精灵
+    void addSound(entt::id_type name_id, entt::hashed_string hashed_path);  ///< @brief 添加音效
+    void playSound(entt::id_type name_id);                                  ///< @brief 播放音效
     // --- Getters and Setters ---
     void setState(std::unique_ptr<engine::ui::state::UIState> state);       ///< @brief 设置当前状态
     engine::ui::state::UIState* getState() const { return state_.get(); }   ///< @brief 获取当前状态
