@@ -37,7 +37,7 @@ void GameScene::testResourceManager() {
     // 载入资源
     context_.getResourceManager().loadTexture("assets/textures/Buildings/Castle.png"_hs);
     // 播放音乐
-    context_.getAudioPlayer().playMusic("assets/audio/4 Battle Track INTRO TomMusic.ogg"_hs);
+    context_.getAudioPlayer().playMusic("battle_bgm"_hs);
     
     // 测试UI元素（使用载入的资源）
     ui_manager_->addElement(std::make_unique<engine::ui::UIImage>("assets/textures/Buildings/Castle.png"_hs));

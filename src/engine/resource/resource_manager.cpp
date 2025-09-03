@@ -32,6 +32,41 @@ void ResourceManager::clear() {
     spdlog::trace("ResourceManager 中的资源通过 clear() 清空。");
 }
 
+void ResourceManager::loadResources(std::string_view file_path) {
+    std::filesystem::path path(file_path);
+    if (!std::filesystem::exists(path)) {
+        spdlog::warn("资源映射文件不存在: {}", file_path);
+        return;
+    }
+    std::ifstream file(path);
+    nlohmann::json json;
+    file >> json;
+    try {
+        if (json.contains("sound")) {
+            for (const auto& [key, value] : json["sound"].items()) {
+                loadSound(entt::hashed_string(key.c_str()), value.get<std::string>());
+            }
+        }
+        if (json.contains("music")) {
+            for (const auto& [key, value] : json["music"].items()) {
+                loadMusic(entt::hashed_string(key.c_str()), value.get<std::string>());
+            }
+        }
+        if (json.contains("texture")) {
+            for (const auto& [key, value] : json["texture"].items()) {
+                loadTexture(entt::hashed_string(key.c_str()), value.get<std::string>());
+            }
+        }
+        if (json.contains("font")) {
+            for (const auto& [key, value] : json["font"].items()) {
+                loadFont(entt::hashed_string(key.c_str()), value.get<int>(), value.get<std::string>());
+            }
+        }   
+    } catch (const nlohmann::json::exception& e) {
+        spdlog::error("加载资源文件失败: {}", e.what());
+    }
+}
+
 // --- 纹理接口实现 ---
 SDL_Texture* ResourceManager::loadTexture(entt::id_type id, std::string_view file_path) {
     // 构造函数已经确保了 texture_manager_ 不为空，因此不需要再进行if检查，以免性能浪费

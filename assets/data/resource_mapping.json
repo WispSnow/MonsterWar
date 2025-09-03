@@ -1,0 +1,20 @@
+{
+    "sound": {
+        "ui_hover": "assets/audio/Fantasy_UI (1).wav",
+        "ui_click": "assets/audio/Piano_Ui (2).wav",
+        "unit_placed": "assets/audio/Fantasy_UI (10).wav",
+        "unit_upgrade": "assets/audio/Fantasy UI - Twilight (2).wav",
+        "arrow_shoot": "assets/audio/Bow Attack.wav",
+        "arrow_hit": "assets/audio/Bow Impact Hit 1.ogg",
+        "sword_hit": "assets/audio/Sword Impact Hit 1.ogg",
+        "spell_shoot": "assets/audio/Fireball 1.ogg",
+        "spell_hit": "assets/audio/fire-ball.wav",
+        "heal": "assets/audio/healing-balm.wav"
+    },
+    "music": {
+        "title_bgm": "assets/audio/HEROICCC(chosic.com).mp3",
+        "battle_bgm": "assets/audio/4 Battle Track INTRO TomMusic.ogg",
+        "win": "assets/audio/level-win.mp3",
+        "lose": "assets/audio/violin-lose-4.mp3"
+    }
+}
