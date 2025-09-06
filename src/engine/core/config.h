@@ -17,9 +17,11 @@ class Config final {
 public:
     // --- 默认配置值 --- (为了方便拓展，全部设置为公有)
     // 窗口设置
-    std::string window_title_ = "SunnyLand";
+    std::string window_title_ = "MonsterWar";
     int window_width_ = 1280;
     int window_height_ = 720;
+    float window_scale_ = 1.0f;
+    float window_logical_scale_ = 1.0f;
     bool window_resizable_ = true;
 
     // 图形设置

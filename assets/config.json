@@ -1,15 +1,17 @@
 {
     "window": {
-        "title": "SunnyLand",
-        "width": 1280,
-        "height": 720,
+        "title": "MonsterWar",
+        "width": 1600,
+        "height": 1216,
+        "window_scale": 0.75,
+        "logical_scale": 1.0,
         "resizable": true
     },
     "graphics": {
         "vsync": true
     },
     "performance": {
-        "target_fps": 144
+        "target_fps": 60
     },
     "audio": {
         "music_volume": 0.2,
