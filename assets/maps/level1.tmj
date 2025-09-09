@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#47aba9",
+ "compressionlevel":-1,
  "height":19,
  "infinite":false,
  "layers":[
@@ -250,8 +251,8 @@
                  "type":"",
                  "visible":true,
                  "width":192,
-                 "x":877.333333333333,
-                 "y":292
+                 "x":880.666666666666,
+                 "y":284.666666666667
                 }, 
                 {
                  "gid":734,
@@ -877,7 +878,7 @@
                  "y":388
                 }, 
                 {
-                 "gid":790,
+                 "gid":2147484438,
                  "height":192,
                  "id":65,
                  "name":"",
@@ -901,6 +902,12 @@
                  "y":1053.33333333333
                 }],
          "opacity":1,
+         "properties":[
+                {
+                 "name":"order",
+                 "type":"int",
+                 "value":10
+                }],
          "type":"objectgroup",
          "visible":true,
          "x":0,

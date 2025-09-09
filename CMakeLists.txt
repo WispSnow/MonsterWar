@@ -335,6 +335,7 @@ set(SOURCES
     src/engine/system/animation_system.cpp
     src/engine/system/render_system.cpp
     src/engine/system/movement_system.cpp
+    src/engine/system/ysort_system.cpp
     src/engine/ui/ui_manager.cpp
     src/engine/ui/ui_element.cpp
     src/engine/ui/ui_interactive.cpp
