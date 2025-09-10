@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/vec2.hpp>
 #include <string_view>
+#include <random>
 
 namespace engine::utils {
 
@@ -65,6 +66,19 @@ struct FColor
         static_cast<float>(b) / 255.0f,
         static_cast<float>(a) / 255.0f
     };
+}
+
+/**
+ * @brief 生成指定范围内的随机整数 [min, max]
+ * @param min 最小值（包含）
+ * @param max 最大值（包含）
+ * @return 随机整数
+ */
+ inline int randomInt(int min, int max) {
+    // static thread_local 表示该变量在每个线程中各自独立，互不影响，避免多线程下的竞争条件
+    static thread_local std::mt19937 generator{std::random_device{}()};
+    std::uniform_int_distribution<int> distribution(min, max);
+    return distribution(generator);
 }
 
 } // namespace engine::utils
