@@ -1,0 +1,95 @@
+{
+    "slime": {
+        "name": "史莱姆",
+        "hp": 200,
+        "atk": 70,
+        "def": 20,
+        "range": 20,
+        "atk_interval": 2.0,
+        "speed": 60,
+        "ranged": false,
+        "sprite_sheet": "assets/textures/Enemy/slime.png",
+        "face_right": false,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -148,
+        "animation": {
+            "idle": {"duration": 50, "row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]},
+            "walk": {"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]},
+            "damage": {"duration": 50, "row":2, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]},
+            "attack": {"duration": 50, "row":3, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]}
+        }
+    },
+    "wolf": {
+        "name": "狼",
+        "hp": 300,
+        "atk": 100,
+        "def": 30,
+        "range": 20,
+        "atk_interval": 1.5,
+        "speed": 80,
+        "ranged": false,
+        "sprite_sheet": "assets/textures/Enemy/wolf.png",
+        "face_right": false,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -148,
+        "animation": {
+            "idle": {"duration": 50, "row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]},
+            "walk": {"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]},
+            "damage": {"duration": 50, "row":2, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]},
+            "attack": {"duration": 50, "row":3, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]}
+        }
+    },
+    "goblin": {
+        "name": "哥布林",
+        "hp": 500,
+        "atk": 130,
+        "def": 60,
+        "range": 20,
+        "atk_interval": 3.0,
+        "speed": 40,
+        "ranged": false,
+        "sprite_sheet": "assets/textures/Enemy/goblin.png",
+        "face_right": false,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -148,
+        "animation": {
+            "idle": {"duration": 50, "row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]},
+            "walk": {"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]},
+            "damage": {"duration": 50, "row":2, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]},
+            "attack": {"duration": 50, "row":3, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]}
+        }
+    },
+    "dark_witch": {
+        "name": "黑暗女巫",
+        "hp": 800,
+        "atk": 150,
+        "def": 50,
+        "range": 250,
+        "atk_interval": 2.0,
+        "speed": 50,
+        "ranged": true,
+        "projectile": "magic_ball",
+        "sprite_sheet": "assets/textures/Enemy/dark_witch.png",
+        "face_right": false,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -148,
+        "animation": {
+            "idle": {"duration": 50, "row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]},
+            "walk": {"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]},
+            "damage": {"duration": 50, "row":2, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]},
+            "attack": {"duration": 50, "row":3, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]},
+            "ranged_attack": {"duration": 50, "row":4, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]}
+        },
+        "sounds": {
+            "emit": "spell_shoot"
+        }
+    }
+}

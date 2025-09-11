@@ -346,6 +346,8 @@ set(SOURCES
     src/engine/ui/state/ui_normal_state.cpp
     src/engine/ui/state/ui_pressed_state.cpp
     src/engine/ui/state/ui_hover_state.cpp
+    src/game/factory/blueprint_manager.cpp
+    src/game/factory/entity_factory.cpp
     src/game/loader/entity_builder_mw.cpp
     src/game/scene/game_scene.cpp
     src/game/system/followpath_system.cpp
