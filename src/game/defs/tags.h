@@ -10,5 +10,6 @@ struct FaceLeftTag {};          ///< @brief 角色图片默认朝右，如果朝
 
 struct MeleeUnitTag {};         ///< @brief 近战单位标签
 struct RangedUnitTag {};        ///< @brief 远程单位标签
+struct HealerTag {};            ///< @brief 治疗单位标签
 
 }   // namespace game::defs

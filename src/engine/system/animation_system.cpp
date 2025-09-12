@@ -2,11 +2,21 @@
 #include "../component/animation_component.h"
 #include "../component/sprite_component.h"
 #include <entt/entity/registry.hpp>
+#include <entt/signal/dispatcher.hpp>
 
 namespace engine::system {
 
-void AnimationSystem::update(entt::registry& registry, float dt) {
-    auto view = registry.view<engine::component::AnimationComponent, engine::component::SpriteComponent>();
+    AnimationSystem::AnimationSystem(entt::registry& registry, entt::dispatcher& dispatcher)
+    : registry_(registry), dispatcher_(dispatcher) {
+    dispatcher_.sink<engine::utils::PlayAnimationEvent>().connect<&AnimationSystem::onPlayAnimationEvent>(this);
+}
+
+AnimationSystem::~AnimationSystem() {
+    dispatcher_.disconnect(this);
+}
+
+void AnimationSystem::update(float dt) {
+    auto view = registry_.view<engine::component::AnimationComponent, engine::component::SpriteComponent>();
     for (auto entity : view) {
         auto& anim_component = view.get<engine::component::AnimationComponent>(entity);
         auto& sprite_component = view.get<engine::component::SpriteComponent>(entity);
@@ -49,6 +59,16 @@ void AnimationSystem::update(entt::registry& registry, float dt) {
         // 更新 SpriteComponent 的源矩形 （根据当前动画帧的源矩形信息）
         const auto& next_frame = current_animation.frames_[anim_component.current_frame_index_];
         sprite_component.sprite_.src_rect_ = next_frame.src_rect_;
+    }
+}
+
+void AnimationSystem::onPlayAnimationEvent(const engine::utils::PlayAnimationEvent& event) {
+    // 使用try_get方法来安全获取可能存在的组件。如果不存在则返回nullptr
+    if (auto anim = registry_.try_get<engine::component::AnimationComponent>(event.entity_); anim) {
+        anim->current_animation_id_ = event.animation_id_;      // 替换动画ID
+        anim->current_frame_index_ = 0;
+        anim->current_time_ms_ = 0.0f;
+        anim->animations_.at(event.animation_id_).loop_ = event.loop_;
     }
 }
 

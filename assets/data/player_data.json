@@ -1,0 +1,112 @@
+{
+    "warrior": {
+        "name": "战士",
+        "description": "近战单位，拥有较高的生命值和防御力，阻挡3名敌人。",
+        "hp": 500,
+        "atk": 90,
+        "def": 40,
+        "range": 30,
+        "atk_interval": 2.0,
+        "type": "melee",
+        "healer": false,
+        "block": 3,
+        "cost": 10,
+        "skill": "shield",
+        "sprite_sheet": "assets/textures/Units/Warrior.png",
+        "face_right": true,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -128,
+        "animation": {
+            "idle": {"row":0, "frames":[0,1,2,3,4,5,6,7]},
+            "guard":{"row":1, "frames":[0,1,2,3,4,5]},
+            "attack": {"row":2, "frames":[0,1,2,3]}
+        },
+        "sounds": {
+            "hit": "sword_hit"
+        }
+    },
+    "archer": {
+        "name": "弓箭手",
+        "description": "远程单位，拥有较高的攻击力和攻击速度。",
+        "hp": 400,
+        "atk": 110,
+        "def": 20,
+        "range": 300,
+        "atk_interval": 1.5,
+        "type": "ranged",
+        "projectile": "arrow",
+        "healer": false,
+        "block": 0,
+        "cost": 8,
+        "skill": "speed_up",
+        "sprite_sheet": "assets/textures/Units/Archer.png",
+        "face_right": true,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -128,
+        "animation": {
+            "idle": {"row":0, "frames":[0,1,2,3,4,5]},
+            "attack":{"row":1, "frames":[0,1,2,3,4,5,6,7]}
+        },
+        "sounds": {
+            "emit": "arrow_shoot"
+        }
+    },
+    "lancer": {
+        "name": "枪兵",
+        "description": "近战单位，属性一般，但可以回复COST，阻挡2名敌人。",
+        "hp": 400,
+        "atk": 100,
+        "def": 30,
+        "range": 40,
+        "atk_interval": 2.0,
+        "type": "melee",
+        "healer": false,
+        "block": 2,
+        "cost": 12,
+        "skill": "rest",
+        "sprite_sheet": "assets/textures/Units/Lancer.png",
+        "face_right": true,
+        "width": 320,
+        "height": 320,
+        "offset_x": -160,
+        "offset_y": -192,
+        "animation": {
+            "idle": {"row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]},
+            "attack": {"row":1, "frames":[0,1,2]}
+        },
+        "sounds": {
+            "hit": "sword_hit"
+        }
+    },
+    "witch": {
+        "name": "女巫",
+        "description": "远程单位，治疗友军。",
+        "hp": 400,
+        "atk": 100,
+        "def": 30,
+        "range": 300,
+        "atk_interval": 1.5,
+        "type": "ranged",
+        "healer": true,
+        "block": 0,
+        "cost": 13,
+        "skill": "power_up",
+        "sprite_sheet": "assets/textures/Units/Witch.png",
+        "face_right": false,
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -148,
+        "animation": {
+            "idle": {"row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]},
+            "heal":{"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]}
+        },
+        "sounds": {
+            "hit": "heal"
+        }
+    }
+}
