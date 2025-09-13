@@ -24,4 +24,10 @@ struct PlayAnimationEvent {
     bool loop_{true};                           ///< @brief 是否循环
 };
 
+/// @brief 动画播放完成事件
+struct AnimationFinishedEvent {
+    entt::entity entity_{entt::null};           ///< @brief 目标实体
+    entt::id_type animation_id_{entt::null};    ///< @brief 动画ID
+};
+
 } // namespace engine::utils

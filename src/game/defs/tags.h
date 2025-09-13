@@ -12,4 +12,10 @@ struct MeleeUnitTag {};         ///< @brief 近战单位标签
 struct RangedUnitTag {};        ///< @brief 远程单位标签
 struct HealerTag {};            ///< @brief 治疗单位标签
 
+struct AttackReadyTag {};       ///< @brief “可攻击”标签，用于标记实体可以进行攻击（冷却完毕）
+
+struct InjuredTag {};           ///< @brief 受伤标签，用于标记实体受伤（有HP损失）
+
+struct ActionLockTag {};        ///< @brief 动作锁定标签，让角色播放完当前动画再进行下一步动作（硬直）
+
 }   // namespace game::defs

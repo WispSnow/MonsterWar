@@ -3,6 +3,7 @@
 namespace game::defs {
 
 constexpr float BLOCK_RADIUS = 40.0f;   ///< @brief 阻挡半径
+constexpr float UNIT_RADIUS = 20.0f;    ///< @brief 角色自身半径（相当于碰撞盒，用于计算攻击范围）
 
 /// @brief 玩家类型枚举
 enum class PlayerType {
