@@ -3,9 +3,9 @@
 #include "../component/player_component.h"
 #include "../component/blocked_by_component.h"
 #include "../defs/tags.h"
-#include "../../engine/utils/events.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
+#include <entt/core/hashed_string.hpp>
 #include <spdlog/spdlog.h>
 
 using namespace entt::literals;

@@ -23,9 +23,10 @@ void BlockSystem::update(entt::registry& registry, entt::dispatcher& dispatcher)
         auto& blocked_by_component = view_blocked_by.get<game::component::BlockedByComponent>(blocked_by_entity);
         // 如果BlockedBy指向的实体无效(例如死亡)，移除被阻挡组件，并发送播放动画“walk”事件
         if (!registry.valid(blocked_by_component.entity_)) {
+            spdlog::info("阻挡者: ID: {}, 无效, 移除 ID: {} 的阻挡者组件", entt::to_integral(blocked_by_component.entity_), entt::to_integral(blocked_by_entity));
             registry.remove<game::component::BlockedByComponent>(blocked_by_entity);
+            registry.remove<game::defs::ActionLockTag>(blocked_by_entity);  // 移除可能存在的动作锁定标签
             dispatcher.enqueue(engine::utils::PlayAnimationEvent{blocked_by_entity, "walk"_hs, true});
-            spdlog::info("阻挡者: ID: {}, 无效, 移除阻挡者组件", entt::to_integral(blocked_by_entity));
         }
     }
 

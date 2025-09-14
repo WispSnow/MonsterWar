@@ -81,10 +81,10 @@ void GameScene::update(float delta_time) {
 
     // 注意系统更新的顺序
     timer_system_->update(registry_, delta_time);
-    set_target_system_->update(registry_);
-    orientation_system_->update(registry_);
-    follow_path_system_->update(registry_, dispatcher, waypoint_nodes_);
     block_system_->update(registry_, dispatcher);
+    set_target_system_->update(registry_);
+    follow_path_system_->update(registry_, dispatcher, waypoint_nodes_);
+    orientation_system_->update(registry_);     // 调用顺序要在Block、SetTarget、FollowPath之后
     attack_starter_system_->update(registry_, dispatcher);
     movement_system_->update(registry_, delta_time);
     animation_system_->update(delta_time);

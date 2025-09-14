@@ -6,7 +6,7 @@
 namespace game::system {
 
 /**
- * @brief 动画状态系统，用于处理动画播放事件。
+ * @brief 动画状态系统，用于处理动画结束后的切换。
  */
 class AnimationStateSystem {
     entt::registry& registry_;
