@@ -8,5 +8,6 @@ class RenderSystem;
 class AnimationSystem;
 class MovementSystem;
 class YSortSystem;
+class AudioSystem;
 
 }   // namespace engine::system

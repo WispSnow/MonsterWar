@@ -21,7 +21,7 @@
         "animation": {
             "idle": {"row":0, "frames":[0,1,2,3,4,5,6,7]},
             "guard":{"row":1, "frames":[0,1,2,3,4,5]},
-            "attack": {"row":2, "frames":[0,1,2,3]}
+            "attack": {"row":2, "frames":[0,1,2,3], "events": {"hit": 2}}
         },
         "sounds": {
             "hit": "sword_hit"
@@ -49,7 +49,7 @@
         "offset_y": -128,
         "animation": {
             "idle": {"row":0, "frames":[0,1,2,3,4,5]},
-            "attack":{"row":1, "frames":[0,1,2,3,4,5,6,7]}
+            "attack":{"row":1, "frames":[0,1,2,3,4,5,6,7], "events": {"emit": 5}}
         },
         "sounds": {
             "emit": "arrow_shoot"
@@ -76,7 +76,7 @@
         "offset_y": -192,
         "animation": {
             "idle": {"row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]},
-            "attack": {"row":1, "frames":[0,1,2]}
+            "attack": {"row":1, "frames":[0,1,2], "events": {"hit": 1}}
         },
         "sounds": {
             "hit": "sword_hit"
@@ -103,7 +103,7 @@
         "offset_y": -148,
         "animation": {
             "idle": {"row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]},
-            "heal":{"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]}
+            "heal":{"duration": 25, "row":1, "frames":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], "events": {"hit": 19}}
         },
         "sounds": {
             "hit": "heal"

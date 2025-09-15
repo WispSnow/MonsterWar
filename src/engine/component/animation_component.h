@@ -26,6 +26,7 @@ struct AnimationFrame {
  */
 struct Animation {
     std::vector<AnimationFrame> frames_;    ///< @brief 动画帧
+    std::unordered_map<int, entt::id_type> events_; ///< @brief 动画事件，键为帧索引，值为事件ID
     float total_duration_ms_{};             ///< @brief 动画总时长（毫秒）
     bool loop_{true};                       ///< @brief 是否循环
 
@@ -33,11 +34,14 @@ struct Animation {
      * @brief 构造函数
      * @param name 动画名称
      * @param frames 动画帧
+     * @param events 动画事件，默认为空
      * @param loop 是否循环，默认true
      */
     Animation(std::vector<AnimationFrame> frames, 
+              std::unordered_map<int, entt::id_type> events = {},
               bool loop = true) : 
               frames_(std::move(frames)), 
+              events_(std::move(events)),
               loop_(loop) {
         // 计算动画总时长 (总时长 = 所有帧时长之和)
         total_duration_ms_ = 0.0f;

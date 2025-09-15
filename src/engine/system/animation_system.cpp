@@ -45,6 +45,13 @@ void AnimationSystem::update(float dt) {
             anim_component.current_time_ms_ -= current_frame.duration_ms_;
             anim_component.current_frame_index_++;
 
+            // 检查是否要发送动画事件
+            if (current_animation.events_.find(anim_component.current_frame_index_) != current_animation.events_.end()) {
+                dispatcher_.enqueue(engine::utils::AnimationEvent{entity, 
+                    current_animation.events_.at(anim_component.current_frame_index_),
+                    anim_component.current_animation_id_});
+            }
+
             // 处理动画播放完成
             if (anim_component.current_frame_index_ >= current_animation.frames_.size()) {
                 if (current_animation.loop_) {

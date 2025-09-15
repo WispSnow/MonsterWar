@@ -126,8 +126,8 @@ void EntityFactory::addAnimationComponent(entt::entity entity,
             // 创建动画帧并插入动画帧容器
             frames.emplace_back(source_rect, anim_blueprint.ms_per_frame_);
         }
-        // 将创建好的动画帧容器插入动画map容器
-        animations.emplace(anim_id, engine::component::Animation(std::move(frames)));
+        // 将创建好的动画帧容器插入动画map容器 (可直接使用蓝图中的事件信息)
+        animations.emplace(anim_id, engine::component::Animation(std::move(frames), anim_blueprint.events_));
     }
     // 通过动画map容器创建动画组件
     registry_.emplace<engine::component::AnimationComponent>(entity, std::move(animations), default_animation_id);

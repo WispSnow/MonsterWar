@@ -402,6 +402,7 @@ std::optional<engine::component::TileInfo> LevelLoader::getTileInfoByGid(int gid
                     auto animation_frame = engine::component::AnimationFrame(frame_rect, duration_ms);
                     animation_frames.push_back(animation_frame);
                 }
+                // TODO: 未来可在Tiled中添加动画事件并解析，目前项目暂不需要，让事件为默认空
                 tile_info.animation_ = engine::component::Animation(std::move(animation_frames));
             }
             // 补充属性信息

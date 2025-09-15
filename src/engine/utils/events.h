@@ -30,4 +30,17 @@ struct AnimationFinishedEvent {
     entt::id_type animation_id_{entt::null};    ///< @brief 动画ID
 };
 
+/// @brief 动画事件
+struct AnimationEvent {
+    entt::entity entity_{entt::null};           ///< @brief 目标实体
+    entt::id_type event_name_id_{entt::null};   ///< @brief 事件名称ID
+    entt::id_type animation_name_id_{entt::null};   ///< @brief 动画名称ID
+};
+
+/// @brief 播放音效事件
+struct PlaySoundEvent {
+    entt::entity entity_{entt::null};           ///< @brief 目标实体（可以为空，即播放全局音效）
+    entt::id_type sound_id_{entt::null};        ///< @brief 音效ID
+};
+
 } // namespace engine::utils
