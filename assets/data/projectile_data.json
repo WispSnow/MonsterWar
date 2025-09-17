@@ -1,0 +1,30 @@
+{
+    "arrow": {
+        "sprite_sheet": "assets/textures/Units/Arrow.png",
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 64,
+        "offset_x": -32,
+        "offset_y": -96,
+        "arc_height": 80.0,
+        "total_flight_time": 0.5,
+        "sounds": {
+            "hit": "arrow_hit"
+        }
+    },
+    "magic_ball": {
+        "sprite_sheet": "assets/textures/Enemy/effects.png",
+        "x": 384,
+        "y": 0,
+        "width": 96,
+        "height": 96,
+        "offset_x": -48,
+        "offset_y": -80,
+        "arc_height": 10.0,
+        "total_flight_time": 0.4,
+        "sounds": {
+            "hit": "spell_hit"
+        }
+    }
+}

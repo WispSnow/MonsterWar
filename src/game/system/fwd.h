@@ -12,5 +12,6 @@ class OrientationSystem;
 class AnimationStateSystem;
 class AnimationEventSystem;
 class CombatResolveSystem;
+class ProjectileSystem;
 
 }   // namespace game::system

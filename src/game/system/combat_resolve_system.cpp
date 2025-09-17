@@ -26,7 +26,8 @@ CombatResolveSystem::~CombatResolveSystem() {
 }
 
 void CombatResolveSystem::onAttackEvent(const game::defs::AttackEvent& event) {
-    if (!registry_.valid(event.target_)) return;
+    // 如果目标无效或标记死亡，直接返回
+    if (!registry_.valid(event.target_) || registry_.all_of<game::defs::DeadTag>(event.target_)) return;
     // 根据伤害公式，让目标扣血
     auto& target_stats = registry_.get<game::component::StatsComponent>(event.target_);
     float damage = calculateEffectiveDamage(event.damage_, target_stats.def_);
@@ -39,7 +40,8 @@ void CombatResolveSystem::onAttackEvent(const game::defs::AttackEvent& event) {
         // 死亡情况
         if (target_stats.hp_ <= 0) {
             target_stats.hp_ = 0;
-            registry_.emplace<game::defs::DeadTag>(event.target_);
+            // 用emplace重复添加会报错，用emplace_or_replace更加健壮，可重复添加
+            registry_.emplace_or_replace<game::defs::DeadTag>(event.target_);
             spdlog::info("玩家 ID: {} 死亡", entt::to_integral(event.target_));
             // NOTE: 可添加死亡特效, 统计信息等
         // 受伤情况
@@ -56,7 +58,7 @@ void CombatResolveSystem::onAttackEvent(const game::defs::AttackEvent& event) {
         // 死亡情况
         if (target_stats.hp_ <= 0) {
             target_stats.hp_ = 0;
-            registry_.emplace<game::defs::DeadTag>(event.target_);
+            registry_.emplace_or_replace<game::defs::DeadTag>(event.target_);
             spdlog::info("敌人 ID: {} 死亡", entt::to_integral(event.target_));
             // TODO: 添加死亡特效
             // TODO: 更新统计信息

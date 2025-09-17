@@ -361,6 +361,7 @@ set(SOURCES
     src/game/system/animation_state_system.cpp
     src/game/system/animation_event_system.cpp
     src/game/system/combat_resolve_system.cpp
+    src/game/system/projectile_system.cpp
 )
 
 # --- 添加 ImGui 开始 ---

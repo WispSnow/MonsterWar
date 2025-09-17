@@ -22,6 +22,7 @@ private:
 
     // 拆分不同的事件类型
     void handleHitEvent(const engine::utils::AnimationEvent& event);    ///< @brief 命中事件
+    void handleEmitEvent(const engine::utils::AnimationEvent& event);   ///< @brief 发射事件
 };
 
 } // namespace game::system
