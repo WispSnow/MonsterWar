@@ -27,6 +27,16 @@ struct FColor
     float g{};
     float b{};
     float a{};
+    // -- 创建一些预设颜色，方便使用 ---
+    static constexpr FColor red() noexcept { return {1.0f, 0.0f, 0.0f, 1.0f}; }
+    static constexpr FColor green() noexcept { return {0.0f, 1.0f, 0.0f, 1.0f}; }
+    static constexpr FColor blue() noexcept { return {0.0f, 0.0f, 1.0f, 1.0f}; }
+    static constexpr FColor white() noexcept { return {1.0f, 1.0f, 1.0f, 1.0f}; }
+    static constexpr FColor black() noexcept { return {0.0f, 0.0f, 0.0f, 1.0f}; }
+    static constexpr FColor purple() noexcept { return {1.0f, 0.0f, 1.0f, 1.0f}; }
+    static constexpr FColor orange() noexcept { return {1.0f, 0.65f, 0.0f, 1.0f}; }
+    static constexpr FColor grey() noexcept { return {0.5f, 0.5f, 0.5f, 1.0f}; }
+    static constexpr FColor yellow() noexcept { return {1.0f, 1.0f, 0.0f, 1.0f}; }
 };
 
 /**

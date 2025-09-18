@@ -34,6 +34,8 @@ private:
     std::unique_ptr<game::system::AnimationEventSystem> animation_event_system_;
     std::unique_ptr<game::system::CombatResolveSystem> combat_resolve_system_;
     std::unique_ptr<game::system::ProjectileSystem> projectile_system_;
+    std::unique_ptr<game::system::EffectSystem> effect_system_;
+    std::unique_ptr<game::system::HealthBarSystem> health_bar_system_;
 
     std::unordered_map<int, game::data::WaypointNode> waypoint_nodes_;  // 路径节点ID到节点数据的映射
     std::vector<int> start_points_;                                     // 起点ID列表

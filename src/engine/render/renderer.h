@@ -50,6 +50,25 @@ public:
     void drawSprite(const Camera& camera, const component::Sprite& sprite, const glm::vec2& position, 
                     const glm::vec2& size, const float rotation = 0.0f);
 
+
+    /**
+     * @brief 绘制填充矩形
+     * 
+     * @param position 矩形左上角位置
+     * @param size 矩形大小
+     * @param color 填充颜色
+     */
+    void drawFilledRect(const Camera& camera, const glm::vec2& position, const glm::vec2& size, const engine::utils::FColor& color);
+
+    /**
+     * @brief 绘制矩形边框
+     * 
+     * @param position 矩形左上角位置
+     * @param size 矩形大小
+     * @param color 边框颜色
+     */
+    void drawRect(const Camera& camera, const glm::vec2& position, const glm::vec2& size, const engine::utils::FColor& color, const int thickness = 1);
+    
     /**
      * @brief 在屏幕坐标中直接渲染一个用于UI的Image对象。
      *
