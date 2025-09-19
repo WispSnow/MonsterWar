@@ -44,6 +44,10 @@ GameScene::~GameScene() {
 }
 
 void GameScene::init() {
+    if (!initSessionData()) {
+        spdlog::error("初始化session_data_失败");
+        return;
+    }
     if (!loadLevel()) {
         spdlog::error("加载关卡失败");
         return;
@@ -65,6 +69,7 @@ void GameScene::init() {
         return;
     }
 
+    testSessionData();
     createTestEnemy();
     Scene::init();
 }
@@ -111,6 +116,18 @@ void GameScene::clean() {
     input_manager.onAction("pause"_hs).disconnect<&GameScene::onClearAllPlayers>(this);
     input_manager.onAction("move_left"_hs).disconnect<&GameScene::onCreateTestPlayerHealer>(this);
     Scene::clean();
+}
+
+bool GameScene::initSessionData() {
+    if (!session_data_) {
+        session_data_ = std::make_shared<game::data::SessionData>();
+        if (!session_data_->loadDefaultData()) {
+            spdlog::error("初始化session_data_失败");
+            return false;
+        }
+    }
+    level_number_ = session_data_->getLevelNumber();
+    return true;
 }
 
 bool GameScene::loadLevel() {
@@ -193,6 +210,15 @@ void GameScene::onEnemyArriveHome(const game::defs::EnemyArriveHomeEvent&) {
 }
 
 // --- 测试函数 ---
+void GameScene::testSessionData() {
+    spdlog::info("关卡号: {}", level_number_);
+    spdlog::info("积分: {}", session_data_->getPoint());
+    spdlog::info("是否通关: {}", session_data_->isLevelClear());
+    for (auto& unit : session_data_->getUnitMap()) {
+        spdlog::info("角色名: {}, 职业: {}, 等级: {}, 稀有度: {}", unit.second.name_, unit.second.class_, unit.second.level_, unit.second.rarity_);
+    }
+}
+
 void GameScene::createTestEnemy() {
     // 每个起点创建一批敌人
     for (auto start_index : start_points_) {

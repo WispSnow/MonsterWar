@@ -1,0 +1,20 @@
+{
+    "unit": {
+        "加尔隆": {"class": "warrior", "level": 1, "rarity": 1},
+        "伊索尔德": {"class": "warrior", "level": 2, "rarity": 1},
+        "布鲁南": {"class": "warrior", "level": 2, "rarity": 2},
+        "莱拉娜": {"class": "archer", "level": 1, "rarity": 1},
+        "凯伦": {"class": "archer", "level": 2, "rarity": 1},
+        "芬恩": {"class": "archer", "level": 1, "rarity": 2},
+        "西瑞娅": {"class": "archer", "level": 2, "rarity": 2},
+        "罗兰": {"class": "lancer", "level": 1, "rarity": 1},
+        "莫迪凯": {"class": "lancer", "level": 2, "rarity": 1},
+        "伊格纳茨": {"class": "lancer", "level": 2, "rarity": 2},
+        "摩根娜": {"class": "witch", "level": 1, "rarity": 1},
+        "希尔维娅": {"class": "witch", "level": 2, "rarity": 1},
+        "赫卡": {"class": "witch", "level": 2, "rarity": 2}
+    },
+    "level": 1,
+    "point": 0,
+    "level_clear": false
+}

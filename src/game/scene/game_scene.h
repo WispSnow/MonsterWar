@@ -1,5 +1,6 @@
 #pragma once
 #include "../data/waypoint_node.h"
+#include "../data/session_data.h"
 #include "../defs/events.h"
 #include "../system/fwd.h"
 #include "../../engine/scene/scene.h"
@@ -44,6 +45,10 @@ private:
 
     // 管理数据的实例很可能同时被多个场景使用，因此使用共享指针
     std::shared_ptr<game::factory::BlueprintManager> blueprint_manager_;// 蓝图管理器，负责管理蓝图数据
+    std::shared_ptr<game::data::SessionData> session_data_;             // 会话数据，关卡切换时需要传递的数据
+
+    // --- 其他场景数据 ---
+    int level_number_{1};
     
 public:
     GameScene(engine::core::Context& context);
@@ -55,6 +60,7 @@ public:
     void clean() override;
 
 private:
+    [[nodiscard]] bool initSessionData();
     [[nodiscard]] bool loadLevel();
     [[nodiscard]] bool initEventConnections();
     [[nodiscard]] bool initInputConnections();
@@ -65,6 +71,7 @@ private:
     void onEnemyArriveHome(const game::defs::EnemyArriveHomeEvent& event);
 
     // 测试函数
+    void testSessionData();
     void createTestEnemy();
     bool onCreateTestPlayerMelee();
     bool onCreateTestPlayerRanged();
