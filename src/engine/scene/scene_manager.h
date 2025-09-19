@@ -43,7 +43,6 @@ public:
     // 核心循环函数
     void update(float delta_time);
     void render();
-    void handleInput();
     void close();
 
 private:

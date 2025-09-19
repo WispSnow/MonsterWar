@@ -52,7 +52,6 @@ public:
     virtual void init();                        ///< @brief 初始化场景。
     virtual void update(float delta_time);      ///< @brief 更新场景。
     virtual void render();                      ///< @brief 渲染场景。
-    virtual void handleInput();                 ///< @brief 处理输入。
     virtual void clean();                       ///< @brief 清理场景。
 
     /// @brief 请求弹出当前场景。

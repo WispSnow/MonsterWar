@@ -1,6 +1,5 @@
 #pragma once
 #include <memory>
-#include <vector>
 #include <glm/vec2.hpp>
 
 namespace engine::core {
@@ -33,9 +32,8 @@ public:
     UIPanel* getRootElement() const;                        ///< @brief 获取根UIPanel元素的指针。
     void clearElements();                                   ///< @brief 清除所有UI元素，通常用于重置UI状态。
 
-    // --- 核心循环方法 ---
-    bool handleInput(engine::core::Context&);               ///< @brief 处理输入事件，如果事件被处理则返回true。
-    void update(float delta_time, engine::core::Context&);
+    // --- 核心循环方法 ---            
+    void update(float delta_time, engine::core::Context&);  ///< @brief 更新UI元素。
     void render(engine::core::Context&);
 
     // 禁止拷贝和移动构造/赋值

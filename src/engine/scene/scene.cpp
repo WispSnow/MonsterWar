@@ -38,13 +38,6 @@ void Scene::render() {
     ui_manager_->render(context_);
 }
 
-void Scene::handleInput() {
-     if (!is_initialized_) return;
-
-    // 处理UI管理器输入
-    if (ui_manager_->handleInput(context_)) return;   // 如果输入事件被UI处理则返回，不再处理游戏对象输入
-}
-
 void Scene::clean() {
     if (!is_initialized_) return;
     

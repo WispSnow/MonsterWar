@@ -1,0 +1,158 @@
+{
+    "icon": {
+        "warrior": {
+            "sprite_sheet": "assets/textures/UI/weapon_icon.png",
+            "x": 96,
+            "y": 128,
+            "width": 32,
+            "height": 32
+        },
+        "lancer": {
+            "sprite_sheet": "assets/textures/UI/weapon_icon.png",
+            "x": 128,
+            "y": 32,
+            "width": 32,
+            "height": 32
+        },
+        "archer": {
+            "sprite_sheet": "assets/textures/UI/weapon_icon.png",
+            "x": 352,
+            "y": 128,
+            "width": 32,
+            "height": 32
+        },
+        "witch": {
+            "sprite_sheet": "assets/textures/UI/weapon_icon.png",
+            "x": 96,
+            "y": 96,
+            "width": 32,
+            "height": 32
+        }
+    },
+    "portrait_frame": {
+        "common": {
+            "level": 1,
+            "sprite_sheet": "assets/textures/UI/frame.png",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64
+        },
+        "rare": {
+            "level": 2,
+            "sprite_sheet": "assets/textures/UI/frame.png",
+            "x": 64,
+            "y": 0,
+            "width": 64,
+            "height": 64
+        }
+    },
+    "portrait": {
+        "加尔隆": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv007.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "伊索尔德": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv079.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "布鲁南": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv076.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "莱拉娜": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv010.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "凯伦": {
+            "sprite_sheet": "assets/textures/UI/portraits/sry1.png",
+            "x": 0,
+            "y": 0,
+            "width": 96,
+            "height": 96
+        },
+        "芬恩": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv146.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "西瑞娅": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv150b.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "罗兰": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv241.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "莫迪凯": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv239.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "伊格纳茨": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv355.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        },
+        "摩根娜": {
+            "sprite_sheet": "assets/textures/UI/portraits/sry2.png",
+            "x": 0,
+            "y": 0,
+            "width": 96,
+            "height": 96
+        },
+        "希尔维娅": {
+            "sprite_sheet": "assets/textures/UI/portraits/sry3.png",
+            "x": 0,
+            "y": 0, 
+            "width": 96,
+            "height": 96
+        },
+        "赫卡": {
+            "sprite_sheet": "assets/textures/UI/portraits/yhmv127_2.png",
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 144
+        }
+    },
+    "layout": {
+        "unit_panel": {
+            "padding": 10,
+            "frame_size": {
+                "width": 128,
+                "height": 128
+            },
+            "font_size": 40,
+            "font_path": "assets/fonts/VonwaonBitmap-16px.ttf",
+            "font_offset": {
+                "x": 16,
+                "y": 72
+            }
+        }
+    }
+}

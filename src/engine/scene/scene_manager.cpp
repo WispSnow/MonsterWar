@@ -46,14 +46,6 @@ void SceneManager::render() {
     }
 }
 
-void SceneManager::handleInput() {
-    // 只考虑栈顶场景
-    Scene* current_scene = getCurrentScene();
-    if (current_scene) {
-        current_scene->handleInput();
-    }
-}
-
 void SceneManager::close() {
     spdlog::trace("正在关闭场景管理器并清理场景栈...");
     // 清理栈中所有剩余的场景（从顶到底）
