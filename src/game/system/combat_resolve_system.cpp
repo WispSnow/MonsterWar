@@ -5,6 +5,7 @@
 #include "../component/blocked_by_component.h"
 #include "../component/blocker_component.h"
 #include "../component/class_name_component.h"
+#include "../data/game_stats.h"
 #include "../../engine/component/transform_component.h"
 #include "../../engine/component/sprite_component.h"
 #include "../defs/tags.h"
@@ -70,7 +71,14 @@ void CombatResolveSystem::onAttackEvent(const game::defs::AttackEvent& event) {
                 engine::component::SpriteComponent>(event.target_);
             dispatcher_.enqueue(game::defs::EnemyDeadEffectEvent{class_name.class_id_, transform.position_, sprite.sprite_.is_flipped_});
 
-            // TODO: 更新统计信息
+            // 更新统计信息
+            auto& game_stats = registry_.ctx().get<game::data::GameStats&>();
+            game_stats.enemy_killed_count_++;       // 敌人击杀数量+1
+            if ((game_stats.enemy_killed_count_ + game_stats.enemy_arrived_count_) >= game_stats.enemy_count_) {
+                spdlog::warn("敌人全部死亡");
+                // TODO: 切换场景逻辑
+            }
+
             // 如果敌人被阻挡，减少阻挡者的阻挡计数
             if (auto blocked_by = registry_.try_get<game::component::BlockedByComponent>(event.target_); blocked_by) {
                 auto blocker_entity = blocked_by->entity_;

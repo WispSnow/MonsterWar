@@ -366,6 +366,8 @@ set(SOURCES
     src/game/system/projectile_system.cpp
     src/game/system/effect_system.cpp
     src/game/system/health_bar_system.cpp
+    src/game/system/game_rule_system.cpp
+    src/game/ui/units_portrait_ui.cpp
 )
 
 # --- 添加 ImGui 开始 ---

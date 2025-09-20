@@ -8,7 +8,7 @@
  "margin":0,
  "name":"buildings",
  "spacing":0,
- "tilecount":9,
+ "tilecount":12,
  "tiledversion":"1.11.2",
  "tileheight":256,
  "tiles":[
@@ -65,6 +65,36 @@
          "image":"..\/..\/textures\/Buildings\/Tower.png",
          "imageheight":256,
          "imagewidth":128
+        }, 
+        {
+         "id":9,
+         "image":"..\/..\/textures\/Decorations\/magic_circle.png",
+         "imageheight":192,
+         "imagewidth":192
+        }, 
+        {
+         "id":10,
+         "image":"..\/..\/textures\/Decorations\/melee_place.png",
+         "imageheight":64,
+         "imagewidth":64,
+         "properties":[
+                {
+                 "name":"place",
+                 "type":"string",
+                 "value":"melee"
+                }]
+        }, 
+        {
+         "id":11,
+         "image":"..\/..\/textures\/Decorations\/range_place.png",
+         "imageheight":64,
+         "imagewidth":64,
+         "properties":[
+                {
+                 "name":"place",
+                 "type":"string",
+                 "value":"range"
+                }]
         }],
  "tilewidth":320,
  "type":"tileset",
