@@ -44,8 +44,8 @@ void CombatResolveSystem::onAttackEvent(const game::defs::AttackEvent& event) {
         // 死亡情况
         if (target_stats.hp_ <= 0) {
             target_stats.hp_ = 0;
-            // 用emplace重复添加会报错，用emplace_or_replace更加健壮，可重复添加
-            registry_.emplace_or_replace<game::defs::DeadTag>(event.target_);
+            // 发送移除单位事件
+            dispatcher_.enqueue(game::defs::RemovePlayerUnitEvent{event.target_});
             spdlog::info("玩家 ID: {} 死亡", entt::to_integral(event.target_));
             // NOTE: 可添加死亡特效, 统计信息等
         // 受伤情况

@@ -367,6 +367,8 @@ set(SOURCES
     src/game/system/effect_system.cpp
     src/game/system/health_bar_system.cpp
     src/game/system/game_rule_system.cpp
+    src/game/system/place_unit_system.cpp
+    src/game/system/render_range_system.cpp
     src/game/ui/units_portrait_ui.cpp
 )
 

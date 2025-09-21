@@ -36,4 +36,21 @@ struct EnemyDeadEffectEvent {
     bool is_flipped_{false};               ///< @brief 是否翻转
 };
 
+/// @brief (创建)准备单位事件
+struct PrepUnitEvent {
+    entt::id_type name_id_{entt::null};     ///< @brief 单位名称ID
+    entt::id_type class_id_{entt::null};    ///< @brief 职业ID
+    int cost_{0};                           ///< @brief 费用
+};
+
+/// @brief 移除角色肖像事件
+struct RemoveUIPortraitEvent {
+    entt::id_type name_id_{entt::null};     ///< @brief 角色名称ID
+};
+
+/// @brief 移除玩家单位事件
+struct RemovePlayerUnitEvent {
+    entt::entity entity_{entt::null};       ///< @brief 单位实体
+};
+
 }   // namespace game::defs

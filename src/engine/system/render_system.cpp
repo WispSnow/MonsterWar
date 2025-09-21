@@ -19,11 +19,13 @@ void RenderSystem::update(entt::registry& registry, render::Renderer& renderer, 
     // 执行渲染，注意排序组件RenderComponent必须放在最前面
     auto view = registry.view<component::RenderComponent, component::TransformComponent, component::SpriteComponent>();
     for (auto entity : view) {
+        const auto& render = view.get<component::RenderComponent>(entity);
         const auto& transform = view.get<component::TransformComponent>(entity);
         const auto& sprite = view.get<component::SpriteComponent>(entity);
         auto position = transform.position_ + sprite.offset_;   // 位置 = 变换组件的位置 + 精灵的偏移
         auto size = sprite.size_ * transform.scale_;            // 大小 = 精灵的大小 * 变换组件的缩放
-        renderer.drawSprite(camera, sprite.sprite_, position, size, transform.rotation_);
+        // 绘制时应用Render组件中的颜色调整参数
+        renderer.drawSprite(camera, sprite.sprite_, position, size, transform.rotation_, render.color_);
     }
 }
 

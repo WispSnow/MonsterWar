@@ -54,6 +54,16 @@ public:
     entt::entity createProjectile(entt::id_type id, const glm::vec2& start_position, const glm::vec2& target_position, entt::entity target, float damage);
     
     /**
+     * @brief 创建单位准备类型实体
+     * @param name_id 单位名称ID
+     * @param class_id 单位ID
+     * @param cost 费用
+     * @param position 位置
+     * @return 单位准备类型实体
+     */
+    entt::entity createUnitPrep(entt::id_type name_id, entt::id_type class_id, int cost, const glm::vec2& position);
+    
+    /**
      * @brief 创建敌人死亡特效
      * @note 敌人死亡特效直接从敌人蓝图中获取，对应的动画名称必须为“damage”。
      * @param class_id 敌人ID

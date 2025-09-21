@@ -15,6 +15,7 @@
 #include "../component/player_component.h"
 #include "../component/blocker_component.h"
 #include "../component/projectile_component.h"
+#include "../component/unit_prep_component.h"
 #include <entt/entity/registry.hpp>
 #include <entt/core/hashed_string.hpp>
 #include <spdlog/spdlog.h>
@@ -122,6 +123,26 @@ entt::entity EntityFactory::createProjectile(entt::id_type id, const glm::vec2& 
     addAudioComponent(entity, blueprint.sounds_);
     // 添加RenderComponent(让投射物位于主图层+1，即可以遮住角色)
     registry_.emplace<engine::component::RenderComponent>(entity, engine::component::RenderComponent::MAIN_LAYER + 1);
+    return entity;
+}
+
+entt::entity EntityFactory::createUnitPrep(entt::id_type name_id, entt::id_type class_id, int cost, const glm::vec2& position) {
+    auto entity = registry_.create();
+    const auto& blueprint = blueprint_manager_.getPlayerClassBlueprint(class_id);
+    addTransformComponent(entity, position);
+    addSpriteComponent(entity, blueprint.sprite_);
+    // 直接添加UnitPrepComponent组件
+    registry_.emplace<game::component::UnitPrepComponent>(entity,
+        name_id, 
+        blueprint.player_.type_,
+        blueprint.stats_.range_,
+        cost);
+
+    // 补充渲染组件与显示攻击范围标志
+    registry_.emplace<engine::component::RenderComponent>(entity, 100);     // 显示优先度很高
+    if (blueprint.player_.type_ == game::defs::PlayerType::RANGED) {
+        registry_.emplace<game::defs::ShowRangeTag>(entity);
+    }
     return entity;
 }
 

@@ -46,10 +46,21 @@ public:
      * @param position 世界坐标中的左上角位置。
      * @param size 精灵的大小。
      * @param rotation 旋转角度（度）。
+     * @param color 调整颜色。(原始颜色*调整颜色，默认为白色，即不调整)
      */
     void drawSprite(const Camera& camera, const component::Sprite& sprite, const glm::vec2& position, 
-                    const glm::vec2& size, const float rotation = 0.0f);
+                    const glm::vec2& size, const float rotation = 0.0f, const engine::utils::FColor& color = engine::utils::FColor::white());
 
+    /**
+     * @brief 绘制填充圆形
+     * @note 必须存在默认圆形纹理"assets/textures/UI/circle.png"
+     * 
+     * @param position 圆形中心位置
+     * @param radius 圆形半径
+     * @param color 填充颜色
+     */
+     void drawFilledCircle(const Camera& camera, const glm::vec2& position, const float radius, 
+        const engine::utils::FColor& color = engine::utils::FColor::white());
 
     /**
      * @brief 绘制填充矩形

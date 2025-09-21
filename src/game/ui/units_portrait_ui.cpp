@@ -26,10 +26,14 @@ UnitsPortraitUI::UnitsPortraitUI(entt::registry& registry,
     : registry_(registry), ui_manager_(ui_manager), context_(context) {
     // 构造函数中直接初始化（创建单位肖像UI），可省去init函数
     createUnitsPortraitUI();
+    // 注册事件
+    context_.getDispatcher().sink<game::defs::RemoveUIPortraitEvent>().connect<&UnitsPortraitUI::onRemoveUIPortraitEvent>(this);
     spdlog::trace("UnitsPortraitUI 构造完成。");
 }
 
-UnitsPortraitUI::~UnitsPortraitUI() = default;
+UnitsPortraitUI::~UnitsPortraitUI() {
+    context_.getDispatcher().sink<game::defs::RemoveUIPortraitEvent>().disconnect<&UnitsPortraitUI::onRemoveUIPortraitEvent>(this);
+}
 
 void UnitsPortraitUI::update(float) {
     updatePortraitCover();
@@ -97,8 +101,11 @@ void UnitsPortraitUI::createUnitsPortraitUI() {
             frame, 
             frame, 
             glm::vec2(0.0f, 0.0f), 
-            frame_size
-            // TODO: 添加点击事件回调函数
+            frame_size,
+            [this, name_id, &unit_data, cost]() {   // 按钮点击回调：发送单位准备事件
+                context_.getDispatcher().enqueue(game::defs::PrepUnitEvent{name_id, unit_data.class_id_, cost}); 
+            }
+            // TODO: 悬浮进入和悬浮离开回调函数
         ));
         frame_panel->addChild(std::make_unique<engine::ui::UIImage>(icon, glm::vec2(0.0f, 0.0f), frame_size / 2.0f));
         frame_panel->addChild(std::make_unique<engine::ui::UILabel>(context_.getTextRenderer(), 
@@ -142,6 +149,11 @@ void UnitsPortraitUI::arrangeUnitsPortraitUI() {
     // 更新panel的size
     anchor_panel_->setSize(glm::vec2(padding + anchor_panel_->getChildren().size() * (frame_size.x + padding), 
                                     frame_size.y + 2 * padding));
+}
+
+void UnitsPortraitUI::onRemoveUIPortraitEvent(const game::defs::RemoveUIPortraitEvent& event) {
+    anchor_panel_->removeChildById(event.name_id_);
+    arrangeUnitsPortraitUI();
 }
 
 } // namespace game::ui
