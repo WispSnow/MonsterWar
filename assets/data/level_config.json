@@ -1,0 +1,85 @@
+[
+    {
+        "name": "Level 1",
+        "map_path": "assets/maps/level1.tmj",
+        "prep_time": 5.0,
+        "enemy_level": 1,
+        "enemy_rarity": 1,
+        "waves": [
+            {
+                "enemy_types": {
+                    "slime": 8,
+                    "wolf": 2
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.8
+            },
+            {
+                "enemy_types": {
+                    "slime": 5,
+                    "wolf": 3,
+                    "goblin": 2
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.5
+            },
+            {
+                "enemy_types": {
+                    "slime": 2,
+                    "wolf": 3,
+                    "goblin": 5,
+                    "dark_witch": 1
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.5
+            }
+        ]
+    },
+    {
+        "name": "Level 2",
+        "map_path": "assets/maps/level2.tmj",
+        "prep_time": 5.0,
+        "enemy_level": 2,
+        "enemy_rarity": 1,
+        "waves": [
+            {
+                "enemy_types": {
+                    "slime": 8,
+                    "wolf": 2,
+                    "dark_witch": 1
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.8
+            },
+            {
+                "enemy_types": {
+                    "slime": 5,
+                    "wolf": 3,
+                    "goblin": 2,
+                    "dark_witch": 2
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.5
+            },
+            {
+                "enemy_types": {
+                    "slime": 2,
+                    "wolf": 3,
+                    "goblin": 5,
+                    "dark_witch": 2
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.5
+            },
+            {
+                "enemy_types": {
+                    "wolf": 4,
+                    "goblin": 5,
+                    "dark_witch": 3
+                },
+                "next_wave_interval": 20.0,
+                "spawn_interval": 0.5
+            }
+        ]
+    }
+]

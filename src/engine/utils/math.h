@@ -113,4 +113,16 @@ inline float distanceSquared(const glm::vec2& a, const glm::vec2& b) {
     return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
 }
 
+/**
+ * @brief 打乱容器中元素的顺序（Fisher-Yates 洗牌算法）
+ * @tparam RandomIt 随机访问迭代器类型
+ * @param first 容器起始迭代器
+ * @param last 容器结束迭代器
+ */
+ template<typename RandomIt>
+ void shuffle(RandomIt first, RandomIt last) {
+    static thread_local std::mt19937 generator{std::random_device{}()};
+    std::shuffle(first, last, generator);
+ }
+
 } // namespace engine::utils
