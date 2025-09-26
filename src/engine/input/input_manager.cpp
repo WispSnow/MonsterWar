@@ -7,6 +7,8 @@
 #include <glm/vec2.hpp>
 #include <entt/signal/dispatcher.hpp>
 #include <entt/core/hashed_string.hpp>
+#include <imgui.h>
+#include <imgui_impl_sdl3.h>
 
 
 namespace engine::input {
@@ -46,6 +48,7 @@ void InputManager::update() {
     // 2. 处理所有待处理的 SDL 事件 (这将设定 action_states_ 的值)
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
+        ImGui_ImplSDL3_ProcessEvent(&event);    // ImGui 步骤2 处理 ImGui 事件
         processEvent(event);
     }
 
@@ -70,6 +73,11 @@ void InputManager::quit() {
 }
 
 void InputManager::processEvent(const SDL_Event& event) {
+    // 如果 ImGui 捕获了鼠标，则不处理该事件(避免穿透到游戏中)
+    if (ImGui::GetIO().WantCaptureMouse) {
+        return;
+    }
+
     switch (event.type) {
         case SDL_EVENT_KEY_DOWN:
         case SDL_EVENT_KEY_UP: {

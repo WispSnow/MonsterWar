@@ -371,6 +371,7 @@ set(SOURCES
     src/game/system/game_rule_system.cpp
     src/game/system/place_unit_system.cpp
     src/game/system/render_range_system.cpp
+    src/game/system/debug_ui_system.cpp
     src/game/ui/units_portrait_ui.cpp
 )
 

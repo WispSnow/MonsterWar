@@ -104,6 +104,7 @@ private:
     [[nodiscard]] bool initInputManager();
     [[nodiscard]] bool initContext();
     [[nodiscard]] bool initSceneManager();
+    [[nodiscard]] bool initImGui();
 
     // 事件处理函数
     void onQuitEvent();

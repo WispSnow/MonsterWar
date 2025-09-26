@@ -14,6 +14,9 @@
 #include <SDL3/SDL.h>
 #include <spdlog/spdlog.h>
 #include <entt/signal/dispatcher.hpp>
+#include <imgui.h>
+#include <imgui_impl_sdl3.h>
+#include <imgui_impl_sdlrenderer3.h>
 
 namespace engine::core {
 
@@ -75,6 +78,7 @@ bool GameApp::init() {
 
     if (!initContext()) return false;
     if (!initSceneManager()) return false;
+    if (!initImGui()) return false;
 
     // 调用场景设置函数 (创建第一个场景并压入栈)
     scene_setup_func_(*context_);
@@ -110,6 +114,11 @@ void GameApp::render() {
 
 void GameApp::close() {
     spdlog::trace("关闭 GameApp ...");
+
+    // --- ImGui 步骤4 清理 ---
+    ImGui_ImplSDLRenderer3_Shutdown();
+    ImGui_ImplSDL3_Shutdown();
+    ImGui::DestroyContext();
 
     // 断开事件处理函数
     dispatcher_->sink<utils::QuitEvent>().disconnect<&GameApp::onQuitEvent>(this);
@@ -316,6 +325,59 @@ bool GameApp::initSceneManager()
         return false;
     }
     spdlog::trace("场景管理器初始化成功。");
+    return true;
+}
+
+bool GameApp::initImGui()
+{
+    // --- ImGui 步骤1 初始化 ---
+    // ImGui必备初始化
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+
+    /* 可选配置开始 */
+    ImGuiIO& io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    // 设置 ImGui 主题
+    ImGui::StyleColorsDark();
+    // ImGui::StyleColorsLight();
+
+    // 设置缩放
+    float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());     // 与系统缩放一致
+    // float main_scale = 1.0f;     // 或者直接设置更加稳定
+    ImGuiStyle& style = ImGui::GetStyle();
+    style.ScaleAllSizes(main_scale);        // 固定样式缩放比例。
+    style.FontScaleDpi = main_scale;        // 设置初始字体缩放比例。
+
+    // 设置透明度
+    float window_alpha = 0.5f;
+
+    // 修改各个UI元素的透明度
+    style.Colors[ImGuiCol_WindowBg].w = window_alpha;
+    style.Colors[ImGuiCol_PopupBg].w = window_alpha;
+
+    // 为了正确显示中文，我们需要加载支持中文的字体。
+    ImFont* font = io.Fonts->AddFontFromFileTTF(
+        "assets/fonts/VonwaonBitmap-16px.ttf",  // 字体文件路径
+        16.0f,                                  // 字体大小
+        nullptr,                                // 字体配置参数
+        io.Fonts->GetGlyphRangesChineseSimplifiedCommon() // 字符范围
+    );
+    if (!font)
+    {
+        // 如果字体加载失败，回退到默认字体，但中文将无法显示。
+        io.Fonts->AddFontDefault();
+        spdlog::warn("警告：无法加载中文字体，中文字符将无法正确显示。");
+    }
+    /* 可选配置结束 */
+
+    // 初始化 ImGui 的 SDL3 和 SDL_Renderer3 后端
+    ImGui_ImplSDL3_InitForSDLRenderer(window_, sdl_renderer_);
+    ImGui_ImplSDLRenderer3_Init(sdl_renderer_);
+
+    spdlog::trace("ImGui 初始化成功。");
     return true;
 }
 
