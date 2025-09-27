@@ -36,6 +36,13 @@ struct EnemyDeadEffectEvent {
     bool is_flipped_{false};               ///< @brief 是否翻转
 };
 
+/// @brief (通用)特效事件
+struct EffectEvent {
+    entt::id_type name_id_{entt::null};    ///< @brief 特效ID
+    glm::vec2 position_{};                 ///< @brief 位置
+    bool is_flipped_{false};               ///< @brief 是否翻转
+};
+
 /// @brief (创建)准备单位事件
 struct PrepUnitEvent {
     entt::id_type name_id_{entt::null};     ///< @brief 单位名称ID

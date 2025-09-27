@@ -1,0 +1,42 @@
+{
+    "heal": {
+        "sprite_sheet": "assets/textures/FX/Heal_Effect.png",
+        "width": 192,
+        "height": 192,
+        "offset_x": -96,
+        "offset_y": -128,
+        "animation": {"duration":50, "row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10]}
+    },
+    "level_up": {
+        "sprite_sheet": "assets/textures/FX/level_up.png",
+        "width": 128,
+        "height": 128,
+        "size_x": 192,
+        "size_y": 192,
+        "offset_x": -96,
+        "offset_y": -144,
+        "animation": {"duration":50, "row":0, "frames":[0,1,2,3,4,5,6,7,8,9,10,11]}
+    },
+    "skill_active": {
+        "sprite_sheet": "assets/textures/FX/skill_active.png",
+        "x": 384,
+        "y": 0,
+        "width": 24,
+        "height": 24,
+        "size_x": 48,
+        "size_y": 48,
+        "offset_x": -24,
+        "offset_y": -24,
+        "animation": {"duration":100, "row":0, "frames":[0,1,2,3,4,5,6,7]}
+    },
+    "skill_ready": {
+        "sprite_sheet": "assets/textures/UI/emote.png",
+        "x": 288,
+        "y": 38,
+        "width": 32,
+        "height": 38,
+        "offset_x": -16,
+        "offset_y": -19,
+        "animation": {"frames":[0]}
+    }
+}
