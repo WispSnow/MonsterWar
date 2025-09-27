@@ -107,4 +107,25 @@ struct EffectBlueprint {
     AnimationBlueprint animation_{};
 };
 
+/// @brief 增益蓝图, 用于给角色添加Buff
+struct BuffBlueprint {
+    float hp_multiplier_{1.0f};
+    float atk_multiplier_{1.0f};
+    float def_multiplier_{1.0f};
+    float range_multiplier_{1.0f};
+    float atk_interval_multiplier_{1.0f};
+    float cost_regen_{0.0f};
+};
+
+/// @brief 技能蓝图, 用于创建技能组件
+struct SkillBlueprint {
+    entt::id_type id_ = entt::null;
+    std::string name_;
+    std::string description_;
+    bool passive_{false};
+    float cooldown_{0.0f};
+    float duration_{0.0f};
+    BuffBlueprint buff_;
+};
+
 }   // namespace game::data

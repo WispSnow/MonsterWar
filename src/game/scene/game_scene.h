@@ -57,6 +57,7 @@ private:
     std::unique_ptr<game::system::RenderRangeSystem> render_range_system_;
     std::unique_ptr<game::system::DebugUISystem> debug_ui_system_;
     std::unique_ptr<game::system::SelectionSystem> selection_system_;
+    std::unique_ptr<game::system::SkillSystem> skill_system_;
     
     std::unique_ptr<game::spawner::EnemySpawner> enemy_spawner_;        // 敌人生成器，负责生成敌人
     std::unique_ptr<game::ui::UnitsPortraitUI> units_portrait_ui_;      // 封装的单位肖像UI，负责管理单位肖像UI的创建、更新和排列

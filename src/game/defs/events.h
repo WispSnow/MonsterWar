@@ -60,4 +60,19 @@ struct RemovePlayerUnitEvent {
     entt::entity entity_{entt::null};       ///< @brief 单位实体
 };
 
+/// @brief 技能准备就绪事件
+struct SkillReadyEvent {
+    entt::entity entity_{entt::null};       ///< @brief 单位实体
+};
+
+/// @brief 技能激活事件
+struct SkillActiveEvent {
+    entt::entity entity_{entt::null};       ///< @brief 单位实体
+};
+
+/// @brief 技能持续结束事件
+struct SkillDurationEndEvent {
+    entt::entity entity_{entt::null};       ///< @brief 单位实体
+};
+
 }   // namespace game::defs

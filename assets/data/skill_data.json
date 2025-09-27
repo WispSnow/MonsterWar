@@ -1,0 +1,34 @@
+{
+    "shield": {
+        "name": "盾御",
+        "description": "防御力提升为2倍, 攻速降低为0.5倍, 持续10秒",
+        "passive": false,
+        "def": 2.0,
+        "atk_interval": 2.0,
+        "cooldown": 20.0,
+        "duration": 10.0
+    },
+    "power_up": {
+        "name": "威能",
+        "description": "攻击力与攻击范围提升为1.5倍, 持续10秒",
+        "passive": false,
+        "atk": 1.5,
+        "range": 1.5,
+        "cooldown": 20.0,
+        "duration": 10.0
+    },
+    "speed_up": {
+        "name": "疾速",
+        "description": "攻击速度提升为1.5倍, 持续10秒",
+        "passive": false,
+        "atk_interval": 0.66,
+        "cooldown": 20.0,
+        "duration": 10.0
+    },
+    "rest": {
+        "name": "休整",
+        "description": "被动: 每秒恢复0.3点COST",
+        "passive": true,
+        "cost_regen": 0.3
+    }
+}

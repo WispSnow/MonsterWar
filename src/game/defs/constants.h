@@ -13,6 +13,8 @@ constexpr engine::utils::FColor RANGE_COLOR = {         ///< @brief 攻击范围
     0.0f, 1.0f, 0.0f, 0.3f      // 透明绿色
 };
 
+constexpr glm::vec2 SKILL_DISPLAY_OFFSET = {0.0f, -96.0f};   ///< @brief 技能显示实体的偏移量
+
 constexpr glm::vec2 HEALTH_BAR_SIZE = {48.0f, 8.0f};    ///< @brief 血量条大小
 constexpr float HEALTH_BAR_OFFSET_Y = 8.0f;             ///< @brief 血量条竖直方向偏移量（水平方向默认正中间）
 
