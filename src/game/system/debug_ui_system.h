@@ -1,5 +1,7 @@
 #pragma once
 #include <entt/entity/fwd.hpp>
+#include <entt/entity/entity.hpp>
+#include "../defs/events.h"
 
 namespace engine::core {
     class Context;
@@ -16,8 +18,13 @@ namespace game::system {
 class DebugUISystem {
     entt::registry& registry_;
     engine::core::Context& context_;
+
+    entt::id_type hovered_portrait_{entt::null};    ///< @brief 悬浮肖像的角色名称ID
+    bool show_debug_ui_{true};                      ///< @brief 是否显示调试UI
+
 public:
     DebugUISystem(entt::registry& registry, engine::core::Context& context);
+    ~DebugUISystem();
 
     // ImGui 步骤3: 一轮循环内，ImGui 需要做的操作（逻辑+渲染）
     void update();
@@ -28,8 +35,16 @@ private:
     void endFrame();
 
     // 封装每个UI显示模块
+    void renderHoveredPortrait();
     void renderHoveredUnit();
     void renderSelectedUnit();
+    void renderInfoUI();
+    void renderSettingUI();
+    void renderDebugUI();
+
+    // 事件回调函数
+    void onUIPortraitHoverEnterEvent(const game::defs::UIPortraitHoverEnterEvent& event);
+    void onUIPortraitHoverLeaveEvent();
 
 };
 

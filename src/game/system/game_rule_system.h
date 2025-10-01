@@ -23,6 +23,8 @@ public:
 private:
     // 事件回调函数
     void onEnemyArriveHome(const game::defs::EnemyArriveHomeEvent& event);
+    void onUpgradeUnitEvent(const game::defs::UpgradeUnitEvent& event);
+    void onRetreatEvent(const game::defs::RetreatEvent& event);
 
 };
 

@@ -2,6 +2,7 @@
 #include "../component/enemy_component.h"
 #include "../component/player_component.h"
 #include "../component/blocked_by_component.h"
+#include "../component/skill_component.h"
 #include "../defs/tags.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
@@ -40,10 +41,20 @@ void AnimationStateSystem::onAnimationFinishedEvent(const engine::utils::Animati
         return;
     }
 
-    // 玩家动画结束，直接返回idle动画
+    // 玩家动画结束
     if (registry_.all_of<game::component::PlayerComponent>(event.entity_)) {
-        dispatcher_.enqueue(engine::utils::PlayAnimationEvent{event.entity_, "idle"_hs, true});
-        spdlog::info("玩家动画结束, 返回idle动画, ID: {}", entt::to_integral(event.entity_));
+        // 如果技能是盾御，且技能正在激活中，则返回guard动画
+        const auto& skill = registry_.get<game::component::SkillComponent>(event.entity_);
+        if (skill.skill_id_ == "shield"_hs && registry_.any_of<game::defs::SkillActiveTag>(event.entity_)) {
+            dispatcher_.enqueue(engine::utils::PlayAnimationEvent{event.entity_, "guard"_hs, true});
+            spdlog::info("玩家动画结束, 返回shield动画, ID: {}", entt::to_integral(event.entity_));
+        }
+        else {  // 其它情况则返回idle动画
+            dispatcher_.enqueue(engine::utils::PlayAnimationEvent{event.entity_, "idle"_hs, true});
+            spdlog::info("玩家动画结束, 返回idle动画, ID: {}", entt::to_integral(event.entity_));
+        }
+        // 移除动作锁定（硬直）标签
+        registry_.remove<game::defs::ActionLockTag>(event.entity_);
         return;
     }
 

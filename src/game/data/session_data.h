@@ -56,6 +56,7 @@ public:
 
     // --- getters ---
     [[nodiscard]] std::unordered_map<entt::id_type, UnitData>& getUnitMap() { return unit_map_; }
+    [[nodiscard]] UnitData& getUnitData(entt::id_type name_id) { return unit_map_[name_id]; }
     [[nodiscard]] int getLevelNumber() const { return level_number_; }
     [[nodiscard]] int getPoint() const { return point_; }
     [[nodiscard]] bool isLevelClear() const { return level_clear_; }

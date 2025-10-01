@@ -75,4 +75,30 @@ struct SkillDurationEndEvent {
     entt::entity entity_{entt::null};       ///< @brief 单位实体
 };
 
+/// @brief UI肖像悬鼠标浮进入事件
+struct UIPortraitHoverEnterEvent {
+    entt::id_type name_id_{entt::null};     ///< @brief 角色名称ID
+};
+
+/// @brief UI肖像悬鼠标浮离开事件
+struct UIPortraitHoverLeaveEvent {};
+
+/// @brief 升级单位事件
+struct UpgradeUnitEvent {
+    entt::entity entity_{entt::null};       ///< @brief 单位实体
+    int cost_{0};                           ///< @brief 消耗费用
+};
+
+/// @brief 撤退单位事件
+struct RetreatEvent {
+    entt::entity entity_{entt::null};       ///< @brief 单位实体
+    int cost_{0};                           ///< @brief 返还费用
+};
+
+// --- 场景相关事件 ---
+struct RestartEvent {};
+struct BackToTitleEvent {};
+struct SaveEvent {};
+struct LevelClearEvent {};
+
 }   // namespace game::defs
