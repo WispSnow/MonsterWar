@@ -79,6 +79,7 @@ private:
     int level_number_{1};
     entt::entity selected_unit_{entt::null};        // 游戏中鼠标选中的单位
     entt::entity hovered_unit_{entt::null};         // 游戏中鼠标悬浮的单位
+    bool show_save_panel_{false};                   // 是否显示保存面板
     
 public:
     /**

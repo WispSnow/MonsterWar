@@ -354,6 +354,7 @@ set(SOURCES
     src/game/factory/entity_factory.cpp
     src/game/loader/entity_builder_mw.cpp
     src/game/scene/game_scene.cpp
+    src/game/scene/title_scene.cpp
     src/game/spawner/enemy_spawner.cpp
     src/game/system/followpath_system.cpp
     src/game/system/remove_dead_system.cpp
