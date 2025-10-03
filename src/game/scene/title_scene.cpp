@@ -48,6 +48,8 @@ void TitleScene::init() {
 
     context_.getGameState().setState(engine::core::State::Title);
     context_.getTime().setTimeScale(1.0f);      // 重置游戏速度
+
+    context_.getAudioPlayer().playMusic("title_bgm"_hs);    // 设置标题场景背景音乐
     
     engine::scene::Scene::init();
 }

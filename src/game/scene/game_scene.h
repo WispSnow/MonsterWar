@@ -4,6 +4,7 @@
 #include "../data/ui_config.h"
 #include "../data/game_stats.h"
 #include "../data/level_config.h"
+#include "../defs/events.h"
 #include "../system/fwd.h"
 #include "../../engine/scene/scene.h"
 #include "../../engine/system/fwd.h"
@@ -122,6 +123,7 @@ private:
     void onBackToTitle();
     void onSave();
     void onLevelClear();
+    void onGameEndEvent(const game::defs::GameEndEvent& event);
 
 };
 

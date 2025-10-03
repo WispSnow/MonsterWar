@@ -1,0 +1,72 @@
+{
+    "level": 1,
+    "level_clear": true,
+    "point": 0,
+    "unit": {
+        "伊格纳茨": {
+            "class": "lancer",
+            "level": 2,
+            "rarity": 2
+        },
+        "伊索尔德": {
+            "class": "warrior",
+            "level": 2,
+            "rarity": 1
+        },
+        "凯伦": {
+            "class": "archer",
+            "level": 2,
+            "rarity": 1
+        },
+        "加尔隆": {
+            "class": "warrior",
+            "level": 1,
+            "rarity": 1
+        },
+        "布鲁南": {
+            "class": "warrior",
+            "level": 2,
+            "rarity": 2
+        },
+        "希尔维娅": {
+            "class": "witch",
+            "level": 3,
+            "rarity": 1
+        },
+        "摩根娜": {
+            "class": "witch",
+            "level": 1,
+            "rarity": 1
+        },
+        "罗兰": {
+            "class": "lancer",
+            "level": 1,
+            "rarity": 1
+        },
+        "芬恩": {
+            "class": "archer",
+            "level": 1,
+            "rarity": 2
+        },
+        "莫迪凯": {
+            "class": "lancer",
+            "level": 3,
+            "rarity": 1
+        },
+        "莱拉娜": {
+            "class": "archer",
+            "level": 1,
+            "rarity": 1
+        },
+        "西瑞娅": {
+            "class": "archer",
+            "level": 2,
+            "rarity": 2
+        },
+        "赫卡": {
+            "class": "witch",
+            "level": 2,
+            "rarity": 2
+        }
+    }
+}
