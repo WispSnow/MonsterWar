@@ -404,10 +404,10 @@ include_directories(
 # --- 添加 ImGui 结束 ---
 
 # 根据平台向"通用源文件"追加平台专属的文件
-# if(WIN32)
-#     # 如果是 Windows 平台, 将资源文件追加到源文件列表
-#     list(APPEND SOURCES resources.rc)
-# endif()
+if(WIN32)
+    # 如果是 Windows 平台, 将资源文件追加到源文件列表
+    list(APPEND SOURCES resources.rc)
+endif()
 # TODO: MacOS 和 Linux 平台
 
 # ============================================
