@@ -36,7 +36,7 @@ public:
         std::shared_ptr<game::data::LevelConfig> level_config = nullptr);
     ~TitleScene();
 
-    void init() override;
+    bool init() override;
     void update(float delta_time) override;
     void render() override;
 

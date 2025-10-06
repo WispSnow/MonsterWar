@@ -22,13 +22,14 @@ EndScene::EndScene(engine::core::Context& context, bool is_win)
 
 EndScene::~EndScene() = default;
 
-void EndScene::init() {
+bool EndScene::init() {
     if (is_win_) {
         context_.getAudioPlayer().playMusic("win"_hs, 0);
     } else {
         context_.getAudioPlayer().playMusic("lose"_hs, 0);
     }
     context_.getGameState().setState(engine::core::State::GameOver);
+    return engine::scene::Scene::init();
 }
 
 void EndScene::render() {

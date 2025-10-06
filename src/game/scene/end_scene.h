@@ -17,7 +17,7 @@ public:
     EndScene(engine::core::Context& context, bool is_win = false);
     ~EndScene();
 
-    void init() override;
+    bool init() override;
     void render() override;
 
 private:

@@ -34,7 +34,7 @@ public:
         game::data::GameStats& game_stats);
     ~LevelClearScene();
 
-    void init() override;
+    bool init() override;
     void render() override;
 
 private:

@@ -36,10 +36,10 @@ LevelClearScene::LevelClearScene(engine::core::Context& context,
 
 LevelClearScene::~LevelClearScene() = default;
 
-void LevelClearScene::init() {
+bool LevelClearScene::init() {
     if (!ui_config_ || !level_config_ || !session_data_ || !blueprint_manager_) {
         spdlog::error("LevelClearScene: ui_config_, level_config_, session_data_ or blueprint_manager_ 必须有值");
-        return;
+        return false;
     }
     context_.getGameState().setState(engine::core::State::LevelClear);
 
@@ -47,6 +47,7 @@ void LevelClearScene::init() {
     registry_.ctx().emplace<std::shared_ptr<game::factory::BlueprintManager>>(blueprint_manager_);
     registry_.ctx().emplace<std::shared_ptr<game::data::UIConfig>>(ui_config_);
     context_.getAudioPlayer().playMusic("win"_hs, 0);
+    return engine::scene::Scene::init();
 }
 
 void LevelClearScene::render() {

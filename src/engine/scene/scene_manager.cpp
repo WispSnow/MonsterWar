@@ -108,7 +108,13 @@ void SceneManager::pushScene(std::unique_ptr<Scene>&& scene) {
 
     // 初始化新场景
     if (!scene->isInitialized()) { // 确保只初始化一次
-        scene->init(); 
+        if (!scene->init()) {
+            spdlog::error("场景 '{}' 初始化失败。", scene->getName());
+            // 场景初始化失败则退出游戏
+            context_.getDispatcher().trigger<engine::utils::QuitEvent>();
+            scene->clean();
+            return;
+        }
     }
 
     // 将新场景移入栈顶
@@ -129,7 +135,7 @@ void SceneManager::popScene() {
     scene_stack_.pop_back();
     if (scene_stack_.empty()) {
         spdlog::warn("弹出最后一个场景，退出游戏。");
-        context_.getDispatcher().enqueue<engine::utils::QuitEvent>();
+        context_.getDispatcher().trigger<engine::utils::QuitEvent>();
     }
 }
 
@@ -150,7 +156,12 @@ void SceneManager::replaceScene(std::unique_ptr<Scene>&& scene) {
 
     // 初始化新场景
     if (!scene->isInitialized()) {
-        scene->init();
+        if (!scene->init()) {
+            spdlog::error("场景 '{}' 初始化失败。", scene->getName());
+            context_.getDispatcher().trigger<engine::utils::QuitEvent>();
+            scene->clean();
+            return;
+        }
     }
 
     // 将新场景压入栈顶
