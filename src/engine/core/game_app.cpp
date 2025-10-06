@@ -346,8 +346,8 @@ bool GameApp::initImGui()
     // ImGui::StyleColorsLight();
 
     // 设置缩放
-    float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());     // 与系统缩放一致
-    // float main_scale = 1.0f;     // 或者直接设置更加稳定
+    // float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());     // 与系统缩放一致
+    float main_scale = 1.0f;     // 或者直接设置更加稳定
     ImGuiStyle& style = ImGui::GetStyle();
     style.ScaleAllSizes(main_scale);        // 固定样式缩放比例。
     style.FontScaleDpi = main_scale;        // 设置初始字体缩放比例。
