@@ -50,10 +50,10 @@ GameScene::GameScene(engine::core::Context& context,
     std::shared_ptr<game::data::UIConfig> ui_config,
     std::shared_ptr<game::data::LevelConfig> level_config)
     : engine::scene::Scene("GameScene", context),
-      blueprint_manager_(blueprint_manager),
-      session_data_(session_data),
-      ui_config_(ui_config),
-      level_config_(level_config)
+      blueprint_manager_(std::move(blueprint_manager)),
+      session_data_(std::move(session_data)),
+      ui_config_(std::move(ui_config)),
+      level_config_(std::move(level_config))
 {
     spdlog::info("GameScene 构造完成");
 }

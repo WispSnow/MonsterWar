@@ -25,10 +25,10 @@ LevelClearScene::LevelClearScene(engine::core::Context& context,
     std::shared_ptr<game::data::SessionData> session_data,
     game::data::GameStats& game_stats)
     : engine::scene::Scene("LevelClearScene", context),
-    blueprint_manager_(blueprint_manager),
-    ui_config_(ui_config),
-    level_config_(level_config),    
-    session_data_(session_data),
+    blueprint_manager_(std::move(blueprint_manager)),
+    ui_config_(std::move(ui_config)),
+    level_config_(std::move(level_config)),    
+    session_data_(std::move(session_data)),
     game_stats_(game_stats) {
         // 直接在构造函数中初始化DebugUI系统
         debug_ui_system_ = std::make_unique<game::system::DebugUISystem>(registry_, context);
