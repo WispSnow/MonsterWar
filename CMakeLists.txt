@@ -550,7 +550,7 @@ if(DLL_LIST)
                 math(EXPR COPIED_COUNT \"\${COPIED_COUNT} + 1\")
                 list(APPEND COPIED_FILES \"  - \${DLL_NAME}\")
             else()
-                message(WARNING \"复制DLL失败: \${DLL}\")
+                message(WARNING \"Copy DLL failed: \${DLL}\")
             endif()
             
             # 复制对应的.pdb文件（如果存在）
@@ -567,7 +567,7 @@ if(DLL_LIST)
     
     # 只在有实际复制操作时输出详细信息
     if(COPIED_COUNT GREATER 0)
-        message(STATUS \"更新了 \${COPIED_COUNT} 个运行时DLL:\")
+        message(STATUS \"Updated \${COPIED_COUNT} runtime DLLs:\")
         foreach(FILE IN LISTS COPIED_FILES)
             message(STATUS \"\${FILE}\")
         endforeach()

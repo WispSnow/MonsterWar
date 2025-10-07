@@ -3,7 +3,6 @@
 **/.DS_Store
 
 # IDE
-.vscode/
 .config/
 .idea/
 .cursor/
@@ -78,7 +77,6 @@ node_modules/
 .env
 # Editor directories and files
 .idea
-.vscode
 *.suo
 *.ntvs*
 *.njsproj
