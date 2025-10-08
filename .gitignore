@@ -20,7 +20,6 @@ cmake-build-*/
 Doxyfile
 doc/
 doxygen_*
-imgui.ini
 
 # external folder - ignore all except imgui
 external/

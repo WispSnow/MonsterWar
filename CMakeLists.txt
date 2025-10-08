@@ -481,6 +481,14 @@ if(NOT SOURCE_SIZE EQUAL TARGET_SIZE)
     file(COPY \"\${SOURCE_DIR}/\" DESTINATION \"\${TARGET_DIR}\")
     message(STATUS \"更新资源文件夹 (大小: \${SOURCE_SIZE} 字节)\")
 endif()
+
+# 复制 imgui.ini（仅当目标位置不存在时）
+set(IMGUI_INI_SOURCE \"${CMAKE_CURRENT_LIST_DIR}/imgui.ini\")
+set(IMGUI_INI_TARGET \"$<TARGET_FILE_DIR:${TARGET}>/imgui.ini\")
+if(EXISTS \"\${IMGUI_INI_SOURCE}\" AND NOT EXISTS \"\${IMGUI_INI_TARGET}\")
+    file(COPY \"\${IMGUI_INI_SOURCE}\" DESTINATION \"$<TARGET_FILE_DIR:${TARGET}>\")
+    message(STATUS \"复制 imgui.ini 到可执行文件目录\")
+endif()
 ")
 
 add_custom_command(TARGET ${TARGET} PRE_BUILD
