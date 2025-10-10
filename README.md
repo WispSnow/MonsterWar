@@ -42,6 +42,7 @@ If you encounter trouble downloading from GitHub (especially on networks in main
 # Credits
 - sprite
     - https://pixelfrog-assets.itch.io/tiny-swords
+    - https://pipoya.itch.io/pipoya-free-2d-game-character-sprites
     - https://htmljsgit.itch.io/magic-area
 - portrait
     - https://blog.goo.ne.jp/akarise
