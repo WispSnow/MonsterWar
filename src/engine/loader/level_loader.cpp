@@ -363,8 +363,12 @@ std::optional<engine::component::TileInfo> LevelLoader::getTileInfoByGid(int gid
         spdlog::error("Tileset 文件 '{}' 缺少 'tiles' 属性。", tileset_it->first);
         return std::nullopt;
     }
-    // 遍历tiles数组，根据id查找对应的瓦片
-    const auto& tiles_json = tileset["tiles"];
+    // 遍历可能存在的tiles数组，补充相关信息
+    const auto& tiles_json = tileset.value("tiles", nlohmann::json::array());
+    if (tiles_json.empty()) {
+        spdlog::info("Tileset 文件 '{}' 中 没有额外瓦片信息", tileset_it->first);
+        return tile_info;    // 这种情况必然是单一图片的情况，直接返回当前瓦片信息即可
+    }
     for (const auto& tile_json : tiles_json) {
         auto tile_id = tile_json.value("id", 0);
         if (tile_id == local_id) {   // 找到对应的瓦片，进行后续操作

@@ -67,5 +67,5 @@ If you encounter trouble downloading from GitHub (especially on networks in main
     - https://tommusic.itch.io/free-fantasy-sfx-and-music-bundle
     - https://www.chosic.com/download-audio/45301/
 
-- Sponsors: `sino`, `李同学`, `swrainbow`, `爱发电用户_b7469`
+- Sponsors: `sino`, `李同学`, `swrainbow`, `爱发电用户_b7469`, `玉笔难图`
 
