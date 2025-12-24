@@ -48,91 +48,91 @@
         }
     },
     "portrait": {
-        "加尔隆": {
+        "Garlon": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv007.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "伊索尔德": {
+        "Isolde": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv079.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "布鲁南": {
+        "Brunan": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv076.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "莱拉娜": {
+        "Lylana": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv010.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "凯伦": {
+        "Kaelen": {
             "sprite_sheet": "assets/textures/UI/portraits/sry1.png",
             "x": 0,
             "y": 0,
             "width": 96,
             "height": 96
         },
-        "芬恩": {
+        "Finn": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv146.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "西瑞娅": {
+        "Cyria": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv150b.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "罗兰": {
+        "Roland": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv241.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "莫迪凯": {
+        "Mordecai": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv239.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "伊格纳茨": {
+        "Ignatz": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv355.png",
             "x": 0,
             "y": 0,
             "width": 144,
             "height": 144
         },
-        "摩根娜": {
+        "Morgana": {
             "sprite_sheet": "assets/textures/UI/portraits/sry2.png",
             "x": 0,
             "y": 0,
             "width": 96,
             "height": 96
         },
-        "希尔维娅": {
+        "Silvia": {
             "sprite_sheet": "assets/textures/UI/portraits/sry3.png",
             "x": 0,
             "y": 0, 
             "width": 96,
             "height": 96
         },
-        "赫卡": {
+        "Heka": {
             "sprite_sheet": "assets/textures/UI/portraits/yhmv127_2.png",
             "x": 0,
             "y": 0,

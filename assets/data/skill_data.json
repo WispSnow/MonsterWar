@@ -1,7 +1,7 @@
 {
     "shield": {
-        "name": "盾御",
-        "description": "防御力提升为2倍, 攻速降低为0.5倍, 持续10秒",
+        "name": "Shield",
+        "description": "Defense increases by 2x, ASPD decreases by 0.5x, lasts 10s",
         "passive": false,
         "def": 2.0,
         "atk_interval": 2.0,
@@ -9,8 +9,8 @@
         "duration": 10.0
     },
     "power_up": {
-        "name": "威能",
-        "description": "攻击力与攻击范围提升为1.5倍, 持续10秒",
+        "name": "Empower",
+        "description": "ATK and Range increases by 1.5x, lasts 10s",
         "passive": false,
         "atk": 1.5,
         "range": 1.5,
@@ -18,16 +18,16 @@
         "duration": 10.0
     },
     "speed_up": {
-        "name": "疾速",
-        "description": "攻击速度提升为1.5倍, 持续10秒",
+        "name": "Haste",
+        "description": "Attack speed increases by 1.5x, lasts 10s",
         "passive": false,
         "atk_interval": 0.66,
         "cooldown": 20.0,
         "duration": 10.0
     },
     "rest": {
-        "name": "休整",
-        "description": "被动: 每秒恢复0.3点COST",
+        "name": "Rest",
+        "description": "Passive: Restore 0.3 COST per second",
         "passive": true,
         "cost_regen": 0.3
     }

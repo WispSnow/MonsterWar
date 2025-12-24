@@ -1,7 +1,7 @@
 {
     "warrior": {
-        "name": "战士",
-        "description": "近战单位，拥有较高的生命值和防御力，阻挡3名敌人。",
+        "name": "Warrior",
+        "description": "Melee unit with high HP and defense. Can block 3 enemies.",
         "hp": 500,
         "atk": 90,
         "def": 40,
@@ -28,8 +28,8 @@
         }
     },
     "archer": {
-        "name": "弓箭手",
-        "description": "远程单位，拥有较高的攻击力和攻击速度。",
+        "name": "Archer",
+        "description": "Ranged unit with high ATK and attack speed.",
         "hp": 400,
         "atk": 110,
         "def": 20,
@@ -56,8 +56,8 @@
         }
     },
     "lancer": {
-        "name": "枪兵",
-        "description": "近战单位，属性一般，但可以回复COST，阻挡2名敌人。",
+        "name": "Lancer",
+        "description": "Melee unit with balanced stats. Restores COST and blocks 2 enemies.",
         "hp": 400,
         "atk": 100,
         "def": 30,
@@ -83,8 +83,8 @@
         }
     },
     "witch": {
-        "name": "女巫",
-        "description": "远程单位，治疗友军。",
+        "name": "Witch",
+        "description": "Ranged unit that heals allies.",
         "hp": 400,
         "atk": 100,
         "def": 30,

@@ -1,6 +1,6 @@
 {
     "slime": {
-        "name": "史莱姆",
+        "name": "Slime",
         "hp": 200,
         "atk": 70,
         "def": 20,
@@ -22,7 +22,7 @@
         }
     },
     "wolf": {
-        "name": "狼",
+        "name": "Wolf",
         "hp": 300,
         "atk": 100,
         "def": 30,
@@ -44,7 +44,7 @@
         }
     },
     "goblin": {
-        "name": "哥布林",
+        "name": "Goblin",
         "hp": 500,
         "atk": 130,
         "def": 60,
@@ -66,7 +66,7 @@
         }
     },
     "dark_witch": {
-        "name": "黑暗女巫",
+        "name": "Dark Witch",
         "hp": 800,
         "atk": 150,
         "def": 50,

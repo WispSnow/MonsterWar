@@ -37,19 +37,19 @@ TitleScene::TitleScene(engine::core::Context& context,
 TitleScene::~TitleScene() = default;
 
 bool TitleScene::init() {
-    if (!initSessionData())         { spdlog::error("初始化session_data_失败"); return false; }
-    if (!initLevelConfig())         { spdlog::error("初始化关卡配置失败"); return false; }
-    if (!initBlueprintManager())    { spdlog::error("初始化蓝图管理器失败"); return false; }
-    if (!initUIConfig())            { spdlog::error("初始化UI配置失败"); return false; }
-    if (!loadTitleLevel())          { spdlog::error("加载关卡失败"); return false; }
-    if (!initSystems())             { spdlog::error("初始化系统失败"); return false; }
-    if (!initRegistryContext())     { spdlog::error("初始化注册表上下文失败"); return false; }
-    if (!initUI())                  { spdlog::error("初始化UI失败"); return false; }
+    if (!initSessionData())         { spdlog::error("Failed to initialize session_data_"); return false; }
+    if (!initLevelConfig())         { spdlog::error("Failed to initialize level config"); return false; }
+    if (!initBlueprintManager())    { spdlog::error("Failed to initialize blueprint manager"); return false; }
+    if (!initUIConfig())            { spdlog::error("Failed to initialize UI config"); return false; }
+    if (!loadTitleLevel())          { spdlog::error("Failed to load level"); return false; }
+    if (!initSystems())             { spdlog::error("Failed to initialize systems"); return false; }
+    if (!initRegistryContext())     { spdlog::error("Failed to initialize registry context"); return false; }
+    if (!initUI())                  { spdlog::error("Failed to initialize UI"); return false; }
 
     context_.getGameState().setState(engine::core::State::Title);
-    context_.getTime().setTimeScale(1.0f);      // 重置游戏速度
+    context_.getTime().setTimeScale(1.0f);      // Reset game speed
 
-    context_.getAudioPlayer().playMusic("title_bgm"_hs);    // 设置标题场景背景音乐
+    context_.getAudioPlayer().playMusic("title_bgm"_hs);    // Set title bgm
     
     return engine::scene::Scene::init();
 }
@@ -75,7 +75,7 @@ bool TitleScene::initSessionData() {
     if (!session_data_) {
         session_data_ = std::make_shared<game::data::SessionData>();
         if (!session_data_->loadDefaultData()) {
-            spdlog::error("初始化session_data_失败");
+            spdlog::error("Failed to initialize session_data_");
             return false;
         }
     }
@@ -86,7 +86,7 @@ bool TitleScene::initLevelConfig() {
     if (!level_config_) {
         level_config_ = std::make_shared<game::data::LevelConfig>();
         if (!level_config_->loadFromFile("assets/data/level_config.json")) {
-            spdlog::error("加载关卡配置失败");
+            spdlog::error("Failed to load level config");
             return false;
         }
     }
@@ -101,7 +101,7 @@ bool TitleScene::initBlueprintManager() {
             !blueprint_manager_->loadProjectileBlueprints("assets/data/projectile_data.json") ||
             !blueprint_manager_->loadEffectBlueprints("assets/data/effect_data.json") ||
             !blueprint_manager_->loadSkillBlueprints("assets/data/skill_data.json")) {
-            spdlog::error("加载蓝图失败");
+            spdlog::error("Failed to load blueprints");
             return false;
         }
     }
@@ -112,7 +112,7 @@ bool TitleScene::initUIConfig() {
     if (!ui_config_) {
         ui_config_ = std::make_shared<game::data::UIConfig>();
         if (!ui_config_->loadFromFile("assets/data/ui_config.json")) {
-            spdlog::error("加载UI配置失败");
+            spdlog::error("Failed to load UI config");
             return false;
         }
     }
@@ -123,7 +123,7 @@ bool TitleScene::initUIConfig() {
 bool TitleScene::loadTitleLevel() {
     engine::loader::LevelLoader level_loader;
     if (!level_loader.loadLevel("assets/maps/title.tmj", this)) {
-        spdlog::error("加载标题关卡失败");
+        spdlog::error("Failed to load title level");
         return false;
     }
     return true;
@@ -174,12 +174,12 @@ void TitleScene::onStartGameClick() {
 
 void TitleScene::onConfirmRoleClick() {
     show_unit_info_ = !show_unit_info_;
-    /* 用ImGui快速实现逻辑，未来再完善游戏内UI */
+    /* ImGui for rapid logic, future polish with in-game UI */
 }
 
 void TitleScene::onLoadGameClick() {
     show_load_panel_ = !show_load_panel_;
-    /* 用ImGui快速实现逻辑，未来再完善游戏内UI */
+    /* ImGui for rapid logic, future polish with in-game UI */
 }
 
 void TitleScene::onQuitClick() {
