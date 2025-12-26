@@ -10,6 +10,7 @@
 # build
 build/
 build-*/
+build_*/
 cmake-build-*/
 *-darwin
 *-Darwin

@@ -1,6 +1,8 @@
 # MonsterWar
 **MonsterWar** is a cross-platfrom tower defense game developed in C++ with Entt, SDL3, glm, ImGui, nlohmann-json and Tiled.
 
+> This project is a teaching demonstration project; it is the 4th episode in a series of tutorials titled "[C++ 游戏开发之旅](https://cppgamedev.top/)".
+
 ## Control
 ```
 Mouse left - select a unit from UI portrait / place a unit on map;
@@ -11,11 +13,16 @@ P - pause or resume;
 A,D / left,right - to move UI portrait panel;
 ```
 
+## Play on Webpage
+[MonsterWar](https://wispsnow.github.io/MonsterWar/)
+
+- **Note**: The game uses ImGui for temporary UI, so you need to resize the webpage size to fit the screen. Otherwise some UI elements may not be visible.
+
+
 ## ScreenShot
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw1.webp" style='width: 600px;'/>
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw2.webp" style='width: 600px;'/>
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw3.webp" style='width: 600px;'/>
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw4.webp" style='width: 600px;'/>
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw-en1.webp" style='width: 800px;'/>
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw-en2.webp" style='width: 800px;'/>
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw-en3.webp" style='width: 800px;'/>
 
 ## Third-party libraries
 * [EnTT](https://github.com/skypjack/entt)
@@ -67,5 +74,16 @@ If you encounter trouble downloading from GitHub (especially on networks in main
     - https://tommusic.itch.io/free-fantasy-sfx-and-music-bundle
     - https://www.chosic.com/download-audio/45301/
 
-- Sponsors: `sino`, `李同学`, `swrainbow`, `爱发电用户_b7469`, `玉笔难图`
+- Sponsors: `sino`, `李同学`, `swrainbow`, `爱发电用户_b7469`, `玉笔难图`, `jl`
 
+## Contact
+
+For support or feedback, please contact us through the GitHub issues section of this repository. Your feedback is crucial for making this series of tutorials better!
+
+## Buy Me a Coffee
+[!["Buy Me A Coffee"](https://storage.ko-fi.com/cdn/kofi2.png?v=3)](https://ko-fi.com/ziyugamedev)
+
+## QQ Discussion Group and My WeChat QR Code
+
+<img src="https://theorhythm.top/personal/qq_group.webp" width="200">
+<img src="https://theorhythm.top/personal/wechat_qr.webp" width="200">
