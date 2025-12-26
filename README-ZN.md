@@ -1,32 +1,33 @@
 [English](README.md) | [简体中文](README-ZN.md)
 
 # MonsterWar
-**MonsterWar** is a cross-platfrom tower defense game developed in C++ with Entt, SDL3, glm, ImGui, nlohmann-json and Tiled.
+**MonsterWar** 是一个使用 Entt, SDL3, glm, ImGui, nlohmann-json 和 Tiled 开发的跨平台 C++ 塔防游戏。
 
-> This project is a teaching demonstration project; it is the 4th episode in a series of tutorials titled "[C++ 游戏开发之旅](https://cppgamedev.top/)".
+> 本项目是一个教学演示项目，是 “[C++ 游戏开发之旅](https://cppgamedev.top/)” 系列教程的第 4 篇。
 
-## Control
+## 操作说明
 ```
-Mouse left - select a unit from UI portrait / place a unit on map;
-S - Skill active shortcut;
-R - Retreat shortcut;
-U - Upgrade shortcut;
-P - pause or resume;
-A,D / left,right - to move UI portrait panel;
+鼠标左键 - 在 UI 头像处选择单位 / 在地图上放置单位；
+S - 技能快捷键；
+R - 撤退快捷键；
+U - 升级快捷键；
+P - 暂停或继续；
+A,D / 左,右箭头 - 移动 UI 头像面板；
 ```
 
-## Play on Webpage
+## 网页版试玩
 [MonsterWar](https://wispsnow.github.io/MonsterWar/)
 
-- **Note**: The game uses ImGui for temporary UI, so you need to resize the webpage size to fit the screen. Otherwise some UI elements may not be visible.
+- **注意**: 游戏使用 ImGui作为临时 UI，因此你需要调整网页大小以适应屏幕。否则某些 UI 元素可能不可见。
 
 
-## ScreenShot
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw-en1.webp" style='width: 800px;'/>
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw-en2.webp" style='width: 800px;'/>
-<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw-en3.webp" style='width: 800px;'/>
+## 游戏截图
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw1.webp" style='width: 600px;'/>
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw2.webp" style='width: 600px;'/>
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw3.webp" style='width: 600px;'/>
+<img src="https://theorhythm.top/gamedev/MW/screen_shot_mw4.webp" style='width: 600px;'/>
 
-## Third-party libraries
+## 第三方库
 * [EnTT](https://github.com/skypjack/entt)
 * [SDL3](https://github.com/libsdl-org/SDL)
 * [SDL3_image](https://github.com/libsdl-org/SDL_image)
@@ -37,8 +38,8 @@ A,D / left,right - to move UI portrait panel;
 * [nlohmann-json](https://github.com/nlohmann/json)
 * [spdlog](https://github.com/gabime/spdlog)
 
-## How to build
-Dependencies will be automatically downloaded by Git FetchContent to make building quite easy:
+## 构建指南
+依赖项将通过 Git FetchContent 自动下载，构建非常简单：
 ```bash
 git clone https://github.com/WispSnow/MonsterWar.git
 cd MonsterWar
@@ -46,9 +47,9 @@ cmake -S . -B build
 cmake --build build
 ```
 
-If you encounter trouble downloading from GitHub (especially on networks in mainland China), please refer to the [wiki](../../wiki) for an alternative building guide.
+如果你在从 GitHub 下载时遇到问题（尤其是在中国大陆网络环境下），请参考 [wiki](../../wiki) 获取替代构建指南。
 
-# Credits
+# 致谢
 - sprite
     - https://pixelfrog-assets.itch.io/tiny-swords
     - https://pipoya.itch.io/pipoya-free-2d-game-character-sprites
@@ -78,15 +79,15 @@ If you encounter trouble downloading from GitHub (especially on networks in main
 
 - Sponsors: `sino`, `李同学`, `swrainbow`, `爱发电用户_b7469`, `玉笔难图`, `jl`
 
-## Contact
+## 联系方式
 
-For support or feedback, please contact us through the GitHub issues section of this repository. Your feedback is crucial for making this series of tutorials better!
+如需支持或反馈，请通过本仓库的 GitHub issues 版块联系我们。您的反馈对于改进这一系列教程至关重要！
 
-## Buy Me a Coffee
+## 请我喝咖啡
 [!["Buy Me A Coffee"](https://storage.ko-fi.com/cdn/kofi2.png?v=3)](https://ko-fi.com/ziyugamedev)
 [!["Support me on Afdian"](https://pic1.afdiancdn.com/static/img/welcome/button-sponsorme.png)](https://afdian.com/a/ziyugamedev)
 
-## QQ Discussion Group and My WeChat QR Code
+## QQ 交流群及我的微信二维码
 
 <img src="https://theorhythm.top/personal/qq_group.webp" width="200">
 <img src="https://theorhythm.top/personal/wechat_qr.webp" width="200">
