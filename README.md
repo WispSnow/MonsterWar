@@ -1,4 +1,4 @@
-[English](README.md) | [简体中文](README-ZN.md)
+**English** | [简体中文](README-ZN.md)
 
 # MonsterWar
 **MonsterWar** is a cross-platfrom tower defense game developed in C++ with Entt, SDL3, glm, ImGui, nlohmann-json and Tiled.
@@ -88,5 +88,7 @@ For support or feedback, please contact us through the GitHub issues section of 
 
 ## QQ Discussion Group and My WeChat QR Code
 
-<img src="https://theorhythm.top/personal/qq_group.webp" width="200">
-<img src="https://theorhythm.top/personal/wechat_qr.webp" width="200">
+<div style="display: flex; gap: 10px;">
+  <img src="https://theorhythm.top/personal/qq_group.webp" width="200" />
+  <img src="https://theorhythm.top/personal/wechat_qr.webp" width="200" />
+</div>

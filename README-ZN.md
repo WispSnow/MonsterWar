@@ -1,4 +1,4 @@
-[English](README.md) | [简体中文](README-ZN.md)
+[English](README.md) | **简体中文**
 
 # MonsterWar
 **MonsterWar** 是一个使用 Entt, SDL3, glm, ImGui, nlohmann-json 和 Tiled 开发的跨平台 C++ 塔防游戏。
@@ -89,5 +89,7 @@ cmake --build build
 
 ## QQ 交流群及我的微信二维码
 
-<img src="https://theorhythm.top/personal/qq_group.webp" width="200">
-<img src="https://theorhythm.top/personal/wechat_qr.webp" width="200">
+<div style="display: flex; gap: 10px;">
+  <img src="https://theorhythm.top/personal/qq_group.webp" width="200" />
+  <img src="https://theorhythm.top/personal/wechat_qr.webp" width="200" />
+</div>
