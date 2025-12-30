@@ -1,7 +1,7 @@
 **English** | [简体中文](README-ZN.md)
 
 # MonsterWar
-**MonsterWar** is a cross-platfrom tower defense game developed in C++ with Entt, SDL3, glm, ImGui, nlohmann-json and Tiled.
+**MonsterWar** is a cross-platform tower defense game developed in C++ with Entt, SDL3, glm, ImGui, nlohmann-json and Tiled.
 
 > This project is a teaching demonstration project; it is the 4th episode in a series of tutorials titled "[C++ 游戏开发之旅](https://cppgamedev.top/)".
 
