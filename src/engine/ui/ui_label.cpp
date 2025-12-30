@@ -1,6 +1,6 @@
 #include "ui_label.h"
-#include "../core/context.h"
-#include "../render/text_renderer.h"
+#include "engine/core/context.h"
+#include "engine/render/text_renderer.h"
 #include <spdlog/spdlog.h>
 
 namespace engine::ui {

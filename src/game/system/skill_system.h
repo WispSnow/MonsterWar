@@ -1,5 +1,5 @@
 #pragma once
-#include "../defs/events.h"
+#include "game/defs/events.h"
 #include <entt/signal/fwd.hpp>
 #include <entt/entity/fwd.hpp>
 

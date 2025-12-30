@@ -1,9 +1,9 @@
 #include "animation_state_system.h"
-#include "../component/enemy_component.h"
-#include "../component/player_component.h"
-#include "../component/blocked_by_component.h"
-#include "../component/skill_component.h"
-#include "../defs/tags.h"
+#include "game/component/enemy_component.h"
+#include "game/component/player_component.h"
+#include "game/component/blocked_by_component.h"
+#include "game/component/skill_component.h"
+#include "game/defs/tags.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 #include <entt/core/hashed_string.hpp>

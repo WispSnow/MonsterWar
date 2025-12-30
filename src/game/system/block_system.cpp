@@ -1,13 +1,13 @@
 #include "block_system.h"
-#include "../component/blocker_component.h"
-#include "../component/enemy_component.h"
-#include "../component/blocked_by_component.h"
-#include "../defs/tags.h"
-#include "../defs/constants.h"
-#include "../../engine/component/transform_component.h"
-#include "../../engine/component/velocity_component.h"
-#include "../../engine/utils/events.h"
-#include "../../engine/utils/math.h"
+#include "game/component/blocker_component.h"
+#include "game/component/enemy_component.h"
+#include "game/component/blocked_by_component.h"
+#include "game/defs/tags.h"
+#include "game/defs/constants.h"
+#include "engine/component/transform_component.h"
+#include "engine/component/velocity_component.h"
+#include "engine/utils/events.h"
+#include "engine/utils/math.h"
 #include <entt/entity/view.hpp>
 #include <spdlog/spdlog.h>
 

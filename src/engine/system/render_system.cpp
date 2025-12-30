@@ -1,9 +1,9 @@
 #include "render_system.h"
-#include "../render/renderer.h"
-#include "../render/camera.h"
-#include "../component/transform_component.h"
-#include "../component/sprite_component.h"
-#include "../component/render_component.h"
+#include "engine/render/renderer.h"
+#include "engine/render/camera.h"
+#include "engine/component/transform_component.h"
+#include "engine/component/sprite_component.h"
+#include "engine/component/render_component.h"
 #include <spdlog/spdlog.h>
 
 namespace engine::system {

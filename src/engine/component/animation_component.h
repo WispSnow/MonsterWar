@@ -1,5 +1,5 @@
 #pragma once
-#include "../../engine/utils/math.h"
+#include "engine/utils/math.h"
 #include <entt/core/hashed_string.hpp>
 #include <entt/entity/entity.hpp>
 #include <unordered_map>

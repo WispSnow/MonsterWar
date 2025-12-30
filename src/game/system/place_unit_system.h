@@ -1,6 +1,6 @@
 #pragma once
-#include "../defs/events.h"
-#include "../defs/constants.h"
+#include "game/defs/events.h"
+#include "game/defs/constants.h"
 #include <entt/entity/entity.hpp>
 #include <entt/signal/fwd.hpp>
 

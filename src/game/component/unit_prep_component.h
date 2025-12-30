@@ -1,5 +1,5 @@
 #pragma once
-#include "../defs/constants.h"
+#include "game/defs/constants.h"
 #include <entt/entity/entity.hpp>
 
 namespace game::component {

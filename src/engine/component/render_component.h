@@ -1,5 +1,5 @@
 #pragma once
-#include "../utils/math.h"
+#include "engine/utils/math.h"
 
 namespace engine::component {
 

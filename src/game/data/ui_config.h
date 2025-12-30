@@ -1,5 +1,5 @@
 #pragma once
-#include "../../engine/render/image.h"
+#include "engine/render/image.h"
 #include <string_view>
 #include <unordered_map>
 #include <entt/entity/fwd.hpp>

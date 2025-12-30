@@ -1,6 +1,6 @@
 #pragma once
-#include "../../engine/loader/basic_entity_builder.h"
-#include "../data/waypoint_node.h"
+#include "engine/loader/basic_entity_builder.h"
+#include "game/data/waypoint_node.h"
 #include <unordered_map>
 #include <vector>
 

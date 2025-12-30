@@ -1,6 +1,6 @@
 #include "scene_manager.h"
 #include "scene.h"
-#include "../core/context.h"
+#include "engine/core/context.h"
 #include <spdlog/spdlog.h>
 #include <entt/signal/dispatcher.hpp>
 

@@ -1,9 +1,9 @@
 #include "ui_normal_state.h"
 #include "ui_hover_state.h"
-#include "../ui_interactive.h"
-#include "../../input/input_manager.h"
-#include "../../core/context.h"
-#include "../../audio/audio_player.h"
+#include "engine/ui/ui_interactive.h"
+#include "engine/input/input_manager.h"
+#include "engine/core/context.h"
+#include "engine/audio/audio_player.h"
 #include <spdlog/spdlog.h>
 #include <entt/core/hashed_string.hpp>
 

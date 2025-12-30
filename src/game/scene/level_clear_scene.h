@@ -1,11 +1,11 @@
 #pragma once
-#include "../../engine/scene/scene.h"
-#include "../../game/data/ui_config.h"
-#include "../../game/data/session_data.h"
-#include "../../game/data/game_stats.h"
-#include "../../game/data/level_config.h"
-#include "../../game/factory/blueprint_manager.h"
-#include "../system/fwd.h"
+#include "engine/scene/scene.h"
+#include "game/data/ui_config.h"
+#include "game/data/session_data.h"
+#include "game/data/game_stats.h"
+#include "game/data/level_config.h"
+#include "game/factory/blueprint_manager.h"
+#include "game/system/fwd.h"
 
 namespace game::scene {
 

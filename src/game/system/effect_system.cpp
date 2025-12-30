@@ -1,6 +1,6 @@
 #include "effect_system.h"
-#include "../defs/events.h"
-#include "../factory/entity_factory.h"
+#include "game/defs/events.h"
+#include "game/factory/entity_factory.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 

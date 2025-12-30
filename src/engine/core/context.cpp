@@ -1,12 +1,12 @@
 #include "context.h"
 #include "time.h"
 #include "game_state.h"
-#include "../input/input_manager.h"
-#include "../render/renderer.h"
-#include "../render/camera.h"
-#include "../render/text_renderer.h"
-#include "../resource/resource_manager.h"
-#include "../audio/audio_player.h"
+#include "engine/input/input_manager.h"
+#include "engine/render/renderer.h"
+#include "engine/render/camera.h"
+#include "engine/render/text_renderer.h"
+#include "engine/resource/resource_manager.h"
+#include "engine/audio/audio_player.h"
 #include <spdlog/spdlog.h>
 #include <entt/signal/dispatcher.hpp>
 

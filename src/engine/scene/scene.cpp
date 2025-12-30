@@ -1,8 +1,8 @@
 #include "scene.h"
 #include "scene_manager.h"
-#include "../core/context.h"
-#include "../ui/ui_manager.h"
-#include "../utils/events.h"
+#include "engine/core/context.h"
+#include "engine/ui/ui_manager.h"
+#include "engine/utils/events.h"
 #include <spdlog/spdlog.h>
 #include <entt/signal/dispatcher.hpp>
 

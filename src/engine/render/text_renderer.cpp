@@ -1,6 +1,6 @@
 #include "text_renderer.h"
 #include "camera.h"
-#include "../resource/resource_manager.h"
+#include "engine/resource/resource_manager.h"
 #include <SDL3_ttf/SDL_ttf.h>
 #include <spdlog/spdlog.h>
 #include <stdexcept>

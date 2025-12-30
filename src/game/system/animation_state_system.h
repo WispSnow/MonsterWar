@@ -1,7 +1,7 @@
 #pragma once
 #include <entt/entity/fwd.hpp>
 #include <entt/signal/fwd.hpp>
-#include "../../engine/utils/events.h"
+#include "engine/utils/events.h"
 
 namespace game::system {
 

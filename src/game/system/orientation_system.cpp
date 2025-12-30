@@ -1,11 +1,11 @@
 #include "orientation_system.h"
-#include "../component/enemy_component.h"
-#include "../component/target_component.h"
-#include "../component/blocked_by_component.h"
-#include "../defs/tags.h"
-#include "../../engine/component/velocity_component.h"
-#include "../../engine/component/sprite_component.h"
-#include "../../engine/component/transform_component.h"
+#include "game/component/enemy_component.h"
+#include "game/component/target_component.h"
+#include "game/component/blocked_by_component.h"
+#include "game/defs/tags.h"
+#include "engine/component/velocity_component.h"
+#include "engine/component/sprite_component.h"
+#include "engine/component/transform_component.h"
 #include <entt/entity/registry.hpp>
 
 namespace game::system {

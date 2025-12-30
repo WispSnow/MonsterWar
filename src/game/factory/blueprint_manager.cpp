@@ -1,5 +1,5 @@
 #include "blueprint_manager.h"
-#include "../../engine/resource/resource_manager.h"
+#include "engine/resource/resource_manager.h"
 #include <filesystem>
 #include <fstream>
 #include <nlohmann/json.hpp>

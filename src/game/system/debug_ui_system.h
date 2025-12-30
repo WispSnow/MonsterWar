@@ -1,7 +1,7 @@
 #pragma once
 #include <entt/entity/fwd.hpp>
 #include <entt/entity/entity.hpp>
-#include "../defs/events.h"
+#include "game/defs/events.h"
 
 namespace engine::core {
     class Context;

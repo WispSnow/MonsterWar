@@ -1,7 +1,7 @@
 #pragma once
 #include "ui_element.h"
 #include "state/ui_state.h"
-#include "../render/image.h"   // 需要引入头文件而不是前置声明（map容器创建时可能会检查内部元素是否有析构定义）
+#include "engine/render/image.h"   // 需要引入头文件而不是前置声明（map容器创建时可能会检查内部元素是否有析构定义）
 #include <unordered_map>
 #include <memory>
 #include <entt/entity/fwd.hpp>

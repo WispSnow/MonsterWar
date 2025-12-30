@@ -1,10 +1,10 @@
 #include "projectile_system.h"
-#include "../component/projectile_component.h"
-#include "../defs/tags.h"
-#include "../defs/events.h"
-#include "../factory/entity_factory.h"
-#include "../../engine/component/transform_component.h"
-#include "../../engine/utils/events.h"
+#include "game/component/projectile_component.h"
+#include "game/defs/tags.h"
+#include "game/defs/events.h"
+#include "game/factory/entity_factory.h"
+#include "engine/component/transform_component.h"
+#include "engine/utils/events.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 #include <glm/gtc/constants.hpp>

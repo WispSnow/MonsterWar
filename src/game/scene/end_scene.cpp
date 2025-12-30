@@ -1,12 +1,12 @@
 #include "end_scene.h"
 #include "title_scene.h"
-#include "../../engine/core/context.h"
-#include "../../engine/core/game_state.h"
-#include "../../engine/audio/audio_player.h"
-#include "../../engine/utils/events.h"
-#include "../../engine/loader/level_loader.h"
-#include "../../engine/loader/basic_entity_builder.h"
-#include "../system/debug_ui_system.h"
+#include "engine/core/context.h"
+#include "engine/core/game_state.h"
+#include "engine/audio/audio_player.h"
+#include "engine/utils/events.h"
+#include "engine/loader/level_loader.h"
+#include "engine/loader/basic_entity_builder.h"
+#include "game/system/debug_ui_system.h"
 #include <spdlog/spdlog.h>
 #include <entt/entity/registry.hpp>
 

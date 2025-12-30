@@ -1,6 +1,6 @@
 #include "input_manager.h"
-#include "../core/config.h"
-#include "../utils/events.h"
+#include "engine/core/config.h"
+#include "engine/utils/events.h"
 #include <stdexcept>
 #include <SDL3/SDL.h>
 #include <spdlog/spdlog.h>

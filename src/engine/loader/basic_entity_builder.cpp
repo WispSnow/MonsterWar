@@ -1,12 +1,12 @@
 #include "basic_entity_builder.h"
 #include "level_loader.h"
-#include "../core/context.h"
-#include "../component/tilelayer_component.h"
-#include "../component/name_component.h"
-#include "../component/sprite_component.h"
-#include "../component/transform_component.h"
-#include "../component/render_component.h"
-#include "../resource/resource_manager.h"
+#include "engine/core/context.h"
+#include "engine/component/tilelayer_component.h"
+#include "engine/component/name_component.h"
+#include "engine/component/sprite_component.h"
+#include "engine/component/transform_component.h"
+#include "engine/component/render_component.h"
+#include "engine/resource/resource_manager.h"
 #include <entt/entt.hpp>
 #include <spdlog/spdlog.h>
 

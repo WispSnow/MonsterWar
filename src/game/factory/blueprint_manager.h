@@ -1,5 +1,5 @@
 #pragma once
-#include "../data/entity_blueprint.h"
+#include "game/data/entity_blueprint.h"
 #include <string_view>
 #include <unordered_map>
 #include <entt/entity/fwd.hpp>

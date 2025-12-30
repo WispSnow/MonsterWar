@@ -1,5 +1,5 @@
 #pragma once
-#include "../../engine/utils/math.h"
+#include "engine/utils/math.h"
 #include <glm/vec2.hpp>
 
 namespace game::defs {

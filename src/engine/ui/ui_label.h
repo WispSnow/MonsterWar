@@ -1,7 +1,7 @@
 #pragma once
 #include "ui_element.h"
-#include "../utils/math.h"
-#include "../render/text_renderer.h"
+#include "engine/utils/math.h"
+#include "engine/render/text_renderer.h"
 #include <string>
 #include <entt/entity/fwd.hpp>
 

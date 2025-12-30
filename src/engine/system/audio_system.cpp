@@ -1,7 +1,7 @@
 #include "audio_system.h"
-#include "../core/context.h"
-#include "../component/audio_component.h"
-#include "../audio/audio_player.h"
+#include "engine/core/context.h"
+#include "engine/component/audio_component.h"
+#include "engine/audio/audio_player.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 #include <entt/core/hashed_string.hpp>

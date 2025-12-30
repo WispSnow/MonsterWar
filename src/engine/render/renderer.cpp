@@ -1,5 +1,5 @@
 #include "renderer.h"
-#include "../resource/resource_manager.h"
+#include "engine/resource/resource_manager.h"
 #include "camera.h"
 #include "image.h"
 #include <SDL3/SDL.h>

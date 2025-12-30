@@ -1,7 +1,7 @@
 #include "entity_builder_mw.h"
-#include "../defs/tags.h"
-#include "../../engine/core/context.h"
-#include "../../engine/component/tilelayer_component.h"
+#include "game/defs/tags.h"
+#include "engine/core/context.h"
+#include "engine/component/tilelayer_component.h"
 #include <nlohmann/json.hpp>
 #include <spdlog/spdlog.h>
 

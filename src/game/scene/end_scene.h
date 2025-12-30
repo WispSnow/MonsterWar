@@ -1,6 +1,6 @@
 #pragma once
-#include "../../engine/scene/scene.h"
-#include "../system/fwd.h"
+#include "engine/scene/scene.h"
+#include "game/system/fwd.h"
 
 namespace game::scene {
 

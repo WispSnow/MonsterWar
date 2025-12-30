@@ -1,7 +1,7 @@
 #include "ui_image.h"
-#include "../render/renderer.h"
-#include "../render/image.h"
-#include "../core/context.h"
+#include "engine/render/renderer.h"
+#include "engine/render/image.h"
+#include "engine/core/context.h"
 #include <spdlog/spdlog.h>
 #include <entt/core/hashed_string.hpp>
 

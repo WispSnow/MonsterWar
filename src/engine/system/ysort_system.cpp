@@ -1,6 +1,6 @@
 #include "ysort_system.h"
-#include "../component/render_component.h"
-#include "../component/transform_component.h"
+#include "engine/component/render_component.h"
+#include "engine/component/transform_component.h"
 #include <entt/entity/registry.hpp>
 
 namespace engine::system {

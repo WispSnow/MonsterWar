@@ -1,6 +1,6 @@
 #include "animation_system.h"
-#include "../component/animation_component.h"
-#include "../component/sprite_component.h"
+#include "engine/component/animation_component.h"
+#include "engine/component/sprite_component.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 

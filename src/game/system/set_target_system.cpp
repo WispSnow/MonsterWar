@@ -1,12 +1,12 @@
 #include "set_target_system.h"
-#include "../component/target_component.h"
-#include "../component/stats_component.h"
-#include "../component/player_component.h"
-#include "../component/enemy_component.h"
-#include "../defs/tags.h"
-#include "../defs/constants.h"
-#include "../../engine/component/transform_component.h"
-#include "../../engine/utils/math.h"
+#include "game/component/target_component.h"
+#include "game/component/stats_component.h"
+#include "game/component/player_component.h"
+#include "game/component/enemy_component.h"
+#include "game/defs/tags.h"
+#include "game/defs/constants.h"
+#include "engine/component/transform_component.h"
+#include "engine/utils/math.h"
 #include <entt/entity/registry.hpp>
 #include <spdlog/spdlog.h>
 

@@ -1,6 +1,6 @@
 #pragma once
-#include "../defs/constants.h"
-#include "../../engine/utils/math.h"
+#include "game/defs/constants.h"
+#include "engine/utils/math.h"
 #include <string>
 #include <vector>
 #include <unordered_map>

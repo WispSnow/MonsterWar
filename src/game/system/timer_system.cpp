@@ -1,8 +1,8 @@
 #include "timer_system.h"
-#include "../component/stats_component.h"
-#include "../component/skill_component.h"
-#include "../defs/tags.h"
-#include "../defs/events.h"
+#include "game/component/stats_component.h"
+#include "game/component/skill_component.h"
+#include "game/defs/tags.h"
+#include "game/defs/events.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 #include <spdlog/spdlog.h>

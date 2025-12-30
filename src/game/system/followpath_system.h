@@ -1,5 +1,5 @@
 #pragma once
-#include "../data/waypoint_node.h"
+#include "game/data/waypoint_node.h"
 #include <entt/entity/fwd.hpp>
 #include <entt/signal/fwd.hpp>
 #include <unordered_map>

@@ -1,6 +1,6 @@
 #pragma once
 #include <string_view>
-#include "../data/level_data.h"
+#include "game/data/level_data.h"
 
 namespace game::data {
 

@@ -1,9 +1,9 @@
 #include "ui_interactive.h"
 #include "state/ui_state.h"
-#include "../core/context.h"
-#include "../render/renderer.h"
-#include "../resource/resource_manager.h"
-#include "../audio/audio_player.h"
+#include "engine/core/context.h"
+#include "engine/render/renderer.h"
+#include "engine/resource/resource_manager.h"
+#include "engine/audio/audio_player.h"
 #include <spdlog/spdlog.h>
 #include <entt/core/hashed_string.hpp>
 

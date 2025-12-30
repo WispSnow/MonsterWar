@@ -147,6 +147,9 @@ endif()
 # 创建可执行文件
 add_executable(${TARGET} ${SOURCES} ${IMGUI_SOURCES})
 
+# 设置包含路径，让包含可以从 src/ 开始
+target_include_directories(${TARGET} PRIVATE src)
+
 # 链接所有依赖库
 target_link_libraries(${TARGET}
     SDL3::SDL3

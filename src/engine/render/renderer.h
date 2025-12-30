@@ -1,7 +1,7 @@
 #pragma once
 #include "image.h"
-#include "../component/sprite_component.h"
-#include "../utils/math.h"
+#include "engine/component/sprite_component.h"
+#include "engine/utils/math.h"
 #include <optional>
 
 struct SDL_Renderer;

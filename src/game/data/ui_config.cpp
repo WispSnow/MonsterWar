@@ -1,5 +1,5 @@
 #include "ui_config.h"
-#include "../../engine/render/image.h"
+#include "engine/render/image.h"
 #include <fstream>
 #include <filesystem>
 #include <spdlog/spdlog.h>

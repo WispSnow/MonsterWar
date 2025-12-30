@@ -1,9 +1,9 @@
 #include "enemy_spawner.h"
-#include "../data/level_data.h"
-#include "../data/waypoint_node.h"
-#include "../data/level_config.h"
-#include "../factory/entity_factory.h"
-#include "../../engine/utils/math.h"
+#include "game/data/level_data.h"
+#include "game/data/waypoint_node.h"
+#include "game/data/level_config.h"
+#include "game/factory/entity_factory.h"
+#include "engine/utils/math.h"
 #include <entt/entity/registry.hpp>
 #include <entt/signal/dispatcher.hpp>
 #include <spdlog/spdlog.h>

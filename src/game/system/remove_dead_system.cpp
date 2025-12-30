@@ -1,5 +1,5 @@
 #include "remove_dead_system.h"
-#include "../defs/tags.h"
+#include "game/defs/tags.h"
 #include <entt/entity/registry.hpp>
 #include <spdlog/spdlog.h>
 

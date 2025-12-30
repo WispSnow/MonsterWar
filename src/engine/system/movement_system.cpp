@@ -1,6 +1,6 @@
 #include "movement_system.h"
-#include "../component/velocity_component.h"
-#include "../component/transform_component.h"
+#include "engine/component/velocity_component.h"
+#include "engine/component/transform_component.h"
 #include <spdlog/spdlog.h>
 
 namespace engine::system {

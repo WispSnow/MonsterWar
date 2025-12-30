@@ -1,6 +1,6 @@
 #include "ui_panel.h"
-#include "../core/context.h"
-#include "../render/renderer.h"
+#include "engine/core/context.h"
+#include "engine/render/renderer.h"
 #include <SDL3/SDL_pixels.h>
 #include <spdlog/spdlog.h>
 

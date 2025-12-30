@@ -1,11 +1,11 @@
 #include "health_bar_system.h"
-#include "../component/stats_component.h"
-#include "../../engine/component/transform_component.h"
-#include "../defs/tags.h"
-#include "../defs/constants.h"
-#include "../../engine/render/renderer.h"
-#include "../../engine/render/camera.h"
-#include "../../engine/utils/math.h"
+#include "game/component/stats_component.h"
+#include "engine/component/transform_component.h"
+#include "game/defs/tags.h"
+#include "game/defs/constants.h"
+#include "engine/render/renderer.h"
+#include "engine/render/camera.h"
+#include "engine/utils/math.h"
 #include <entt/entity/registry.hpp>
 
 namespace game::system {

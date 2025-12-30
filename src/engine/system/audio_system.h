@@ -1,5 +1,5 @@
 #pragma once
-#include "../../engine/utils/events.h"
+#include "engine/utils/events.h"
 #include <entt/entity/fwd.hpp>
 
 namespace engine::core {
