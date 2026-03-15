@@ -2,6 +2,11 @@
 .DS_Store
 **/.DS_Store
 
+# Agent
+.agent/
+.agents/
+.claude/
+
 # IDE
 .config/
 .idea/

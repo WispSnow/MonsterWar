@@ -6,8 +6,8 @@ namespace engine::resource {
     class ResourceManager;
 }
 
-struct Mix_Chunk;
-struct Mix_Music;
+struct MIX_Mixer;
+struct MIX_Track;
 
 namespace engine::audio {
 
@@ -20,7 +20,9 @@ namespace engine::audio {
 class AudioPlayer final{
 private:
     engine::resource::ResourceManager* resource_manager_;   ///< @brief 指向 ResourceManager 的非拥有指针，用于加载和管理音频资源。
-    entt::id_type current_music_id_;         ///< @brief 当前正在播放的音乐路径，用于避免重复播放同一音乐。
+    MIX_Mixer* mixer_{nullptr};         ///< @brief SDL_mixer 混音器指针（非拥有）。
+    MIX_Track* music_track_{nullptr};   ///< @brief 专用于背景音乐播放的轨道（拥有）。
+    entt::id_type current_music_id_;    ///< @brief 当前正在播放的音乐ID，用于避免重复播放同一音乐。
 
 public:
     /**
@@ -35,27 +37,25 @@ public:
     AudioPlayer(AudioPlayer&&) = delete;
     AudioPlayer& operator=(AudioPlayer&&) = delete;
 
-    // --- 播放控制方法 --- 
+    // --- 播放控制方法 ---
     /**
-     * @brief 播放音效（chunk）。
+     * @brief 播放音效。
      * @note 必须确保 ResourceManager 加载了音效。
      * @param sound_id 音效ID。
-     * @param channel 要播放的特定通道，或 -1 表示第一个可用通道。默认为 -1。
-     * @return 音效正在播放的通道，出错时返回 -1。
+     * @return 成功返回 0，出错返回 -1。
      */
-    int playSound(entt::id_type sound_id, int channel = -1);
+    int playSound(entt::id_type sound_id);
 
     /**
-     * @brief 播放音效（chunk）。
+     * @brief 播放音效。
      * @note 如果尚未缓存，则通过 ResourceManager 加载音效。
      * @param hashed_path 音效文件路径。
-     * @param channel 要播放的特定通道，或 -1 表示第一个可用通道。默认为 -1。
-     * @return 音效正在播放的通道，出错时返回 -1。
+     * @return 成功返回 0，出错返回 -1。
      */
-    int playSound(entt::hashed_string hashed_path, int channel = -1);
+    int playSound(entt::hashed_string hashed_path);
 
     /**
-     * @brief 播放背景音乐。如果正在播放，则淡出之前的音乐。
+     * @brief 播放背景音乐。如果正在播放，则停止之前的音乐。
      * @note 必须确保 ResourceManager 加载了音乐。
      * @param music_id 音乐ID。
      * @param loops 循环次数（-1 无限循环，0 播放一次，1 播放两次，以此类推）。默认为 -1。
@@ -65,7 +65,7 @@ public:
     bool playMusic(entt::id_type music_id, int loops = -1, int fade_in_ms = 0);
 
     /**
-     * @brief 播放背景音乐。如果正在播放，则淡出之前的音乐。
+     * @brief 播放背景音乐。如果正在播放，则停止之前的音乐。
      * @note 如果尚未缓存，则通过 ResourceManager 加载音乐。
      * @param hashed_path 音乐文件路径。
      * @param loops 循环次数（-1 无限循环，0 播放一次，1 播放两次，以此类推）。默认为 -1。
@@ -91,11 +91,10 @@ public:
     void resumeMusic();
 
     /**
-     * @brief 设置音效通道的音量。
+     * @brief 设置音效音量。
      * @param volume 音量级别（0.0-1.0）。
-     * @param channel 通道号（-1 表示所有通道）。默认为 -1。
      */
-    void setSoundVolume(float volume, int channel = -1);
+    void setSoundVolume(float volume);
 
     /**
      * @brief 设置音乐通道的音量。
@@ -111,10 +110,9 @@ public:
 
     /**
      * @brief 获取当前音效音量。
-     * @param channel 通道号（-1 表示所有通道）。默认为 -1。
      * @return 音量级别（0.0-1.0）。
      */
-    float getSoundVolume(int channel = -1);
+    float getSoundVolume();
 
 };
 

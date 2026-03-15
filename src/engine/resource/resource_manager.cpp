@@ -1,16 +1,16 @@
 #include "resource_manager.h"
 #include "texture_manager.h"
 #include "audio_manager.h"
-#include "font_manager.h" 
+#include "font_manager.h"
 #include <fstream>
 #include <filesystem>
 #include <SDL3_mixer/SDL_mixer.h>
-#include <SDL3_ttf/SDL_ttf.h> 
+#include <SDL3_ttf/SDL_ttf.h>
 #include <glm/glm.hpp>
 #include <spdlog/spdlog.h>
 #include <nlohmann/json.hpp>
 #include <entt/core/hashed_string.hpp>
- 
+
 namespace engine::resource {
 
 ResourceManager::~ResourceManager() = default;
@@ -28,6 +28,7 @@ ResourceManager::ResourceManager(SDL_Renderer* renderer) {
 void ResourceManager::clear() {
     font_manager_->clearFonts();
     audio_manager_->clearSounds();
+    audio_manager_->clearMusic();
     texture_manager_->clearTextures();
     spdlog::trace("ResourceManager 中的资源通过 clear() 清空。");
 }
@@ -61,7 +62,7 @@ void ResourceManager::loadResources(std::string_view file_path) {
             for (const auto& [key, value] : json["font"].items()) {
                 loadFont(entt::hashed_string(key.c_str()), value.get<int>(), value.get<std::string>());
             }
-        }   
+        }
     } catch (const nlohmann::json::exception& e) {
         spdlog::error("加载资源文件失败: {}", e.what());
     }
@@ -102,19 +103,19 @@ void ResourceManager::clearTextures() {
 }
 
 // --- 音频接口实现 ---
-Mix_Chunk* ResourceManager::loadSound(entt::id_type id, std::string_view file_path) {
+MIX_Audio* ResourceManager::loadSound(entt::id_type id, std::string_view file_path) {
     return audio_manager_->loadSound(id, file_path);
 }
 
-Mix_Chunk* ResourceManager::loadSound(entt::hashed_string str_hs) {
+MIX_Audio* ResourceManager::loadSound(entt::hashed_string str_hs) {
     return audio_manager_->loadSound(str_hs);
 }
 
-Mix_Chunk* ResourceManager::getSound(entt::id_type id, std::string_view file_path) {
+MIX_Audio* ResourceManager::getSound(entt::id_type id, std::string_view file_path) {
     return audio_manager_->getSound(id, file_path);
 }
 
-Mix_Chunk* ResourceManager::getSound(entt::hashed_string str_hs) {
+MIX_Audio* ResourceManager::getSound(entt::hashed_string str_hs) {
     return audio_manager_->getSound(str_hs);
 }
 
@@ -126,19 +127,19 @@ void ResourceManager::clearSounds() {
     audio_manager_->clearSounds();
 }
 
-Mix_Music* ResourceManager::loadMusic(entt::id_type id, std::string_view file_path) {
+MIX_Audio* ResourceManager::loadMusic(entt::id_type id, std::string_view file_path) {
     return audio_manager_->loadMusic(id, file_path);
 }
 
-Mix_Music* ResourceManager::loadMusic(entt::hashed_string str_hs) {
+MIX_Audio* ResourceManager::loadMusic(entt::hashed_string str_hs) {
     return audio_manager_->loadMusic(str_hs);
 }
 
-Mix_Music* ResourceManager::getMusic(entt::id_type id, std::string_view file_path) {
+MIX_Audio* ResourceManager::getMusic(entt::id_type id, std::string_view file_path) {
     return audio_manager_->getMusic(id, file_path);
 }
 
-Mix_Music* ResourceManager::getMusic(entt::hashed_string str_hs) {
+MIX_Audio* ResourceManager::getMusic(entt::hashed_string str_hs) {
     return audio_manager_->getMusic(str_hs);
 }
 
@@ -148,6 +149,10 @@ void ResourceManager::unloadMusic(entt::id_type id) {
 
 void ResourceManager::clearMusic() {
     audio_manager_->clearMusic();
+}
+
+MIX_Mixer* ResourceManager::getMixer() {
+    return audio_manager_->getMixer();
 }
 
 // --- 字体接口实现 ---
