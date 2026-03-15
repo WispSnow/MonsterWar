@@ -31,6 +31,12 @@ private:
     SDL_Window* window_ = nullptr;              ///< @brief SDL窗口，用于获取窗口大小
     SDL_Renderer* renderer_ = nullptr;          ///< @brief SDL渲染器，用于获取逻辑分辨率
     State current_state_ = State::Title;        ///< @brief 当前游戏状态
+    int logical_width_ = 0;                     ///< @brief 最近一次有效的逻辑宽度
+    int logical_height_ = 0;                    ///< @brief 最近一次有效的逻辑高度
+    SDL_RendererLogicalPresentation logical_mode_ = SDL_LOGICAL_PRESENTATION_DISABLED;
+    bool logical_presentation_disabled_ = false; ///< @brief 是否为 ImGui 暂时关闭了逻辑分辨率
+
+    bool syncLogicalPresentationState();
 
 public:
     /**

@@ -198,7 +198,13 @@ bool GameApp::initSDL()
     // 设置逻辑分辨率 (窗口大小 * 逻辑缩放比例)
     int logical_width = static_cast<int>(static_cast<float>(config_->window_width_) * config_->window_logical_scale_);
     int logical_height = static_cast<int>(static_cast<float>(config_->window_height_) * config_->window_logical_scale_);
-    SDL_SetRenderLogicalPresentation(sdl_renderer_, logical_width, logical_height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+    if (!SDL_SetRenderLogicalPresentation(sdl_renderer_,
+                                          logical_width,
+                                          logical_height,
+                                          SDL_LOGICAL_PRESENTATION_LETTERBOX)) {
+        spdlog::error("设置初始逻辑分辨率失败! SDL错误: {}", SDL_GetError());
+        return false;
+    }
     spdlog::trace("SDL 初始化成功。");
     return true;
 }
